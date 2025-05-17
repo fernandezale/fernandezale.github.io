@@ -1,9 +1,9 @@
 const projectData = {
-    'bolt-storm': {
-      title: 'Bolt Storm',
-      description: 'Gameplay Programmer in a university project using UE4, C++ and Blueprints.',
-      bg: '4552fc1d-8664-4dc8-a847-6b8cf93dee51.png',
-      video: 'https://www.youtube.com/embed/YOUR_VIDEO_ID'
+    'MySims': {
+      title: 'My Sims: Cozy Bundle',
+      description: 'Gameplay Programmer EA project using C++ and LUA.',
+      bg: 'MySims-Cozy-Bundle.jpg',
+      video: ''
     },
     'avatar': {
       title: 'Avatar: Frontiers of Pandora',

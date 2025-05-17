@@ -10,7 +10,6 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
-    padding: 2rem;
   }
   
   .card {
@@ -26,8 +25,10 @@ body {
     transform: scale(1.05);
   }
   .card img {
-    width: 100%;
-    border-radius: 4px;
+    display: block;
+    margin: 50px; /* Centra la imagen dentro de la tarjeta */
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho de la tarjeta */
+    height: auto; /* Mantiene las proporciones de la imagen */
   }
   
   #project-detail {
