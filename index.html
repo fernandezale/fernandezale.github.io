@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio</title>
+    <title>Alexis - Portfolio</title>
     <style>
         /* Variables */
         :root {
@@ -219,6 +219,34 @@
                 padding: 1.25rem;
             }
         }
+
+        .image-carousel {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scroll-behavior: smooth;
+        }
+        .image-carousel img {
+            height: 480px;
+            width: 640px !important;      /* Sobrescribe cualquier width heredado */
+            max-width: 640px !important;  /* Sobrescribe cualquier max-width heredado */
+            max-height: 480px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            background: #fff;
+            display: block;
+        }
+
+        .card img {
+            display: block;
+            max-width: 80%;
+            width: auto;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
@@ -227,18 +255,18 @@
     <div class="content">
         <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
         <div class="card">
-            <h3 class="card-title">Alexis</h3>
+            <h3 class="card-title">Alexis Fernandez</h3>
             <div class="card-meta">Desarrollador de Unreal Engine 5 & Programador C++</div>
             <p>Soy un apasionado desarrollador de Unreal Engine enfocado en crear mecanicas atractivas y herramientas.
                 Con experiencia en C++, blueprints, UMG y IA.</p>
                 <div class="contact-links">
-                    <a href="alexis.ezequie.fernandez.94@gmail.com" class="contact-link">
-                        ✉️ Email
+                    <a href="mailto:alexis.ezequiel.fernandez.94@gmail.com" class="contact-link">
+                        ✉️ alexis.ezequiel.fernandez.94@gmail.com
                     </a>
                     <a href="https://github.com/fernandezale" target="_blank" class="contact-link">
                         📂 GitHub
                     </a>
-                    <a href="linkedin.com/in/alexis-ezequiel-fernández-5738501a7" target="_blank" class="contact-link">
+                    <a href="https://linkedin.com/in/alexis-ezequiel-fernández-5738501a7" target="_blank" class="contact-link">
                         👥 LinkedIn
                     </a>
                     <a href="CV_Alexis.pdf" target="_blank" class="contact-link">
@@ -254,7 +282,7 @@
             <h2 class="section-title">Sobre mí</h2>
             <div class="card">
                 <p>
-                    Con más de 2 años de experiencia en desarrollo de video juegos, he trabajado en proyectos que van desde mejoras de proyectos hasta juegos desarrollados desde cero.
+                    Con más de 2 años de experiencia en desarrollo de videos juegos, he trabajado en proyectos que van desde mejoras de proyectos hasta juegos desarrollados desde cero.
                     Me apasiona escribir código limpio y optimizado, y crear mecanicas de juego intuitivas y divertidas.
                 </p>
                 <p>
@@ -270,11 +298,11 @@
                 <div class="card" onclick="showProject('MySims')">
                     <img src="MySims-Cozy-Bundle (1).jpg" alt="My Sims Cozy Bundle">
                     <h2>My Sims Cozy Bundle</h2>
-                    <p>TheOGs • EA • C++ • Gameplay programmer • LUA</p>
+                    <p>TheOGs • EA • Custom Engine • C++ • Gameplay programmer • LUA</p>
                 </div>
                 <div class="card" onclick="showProject('Mecenas')">
                     <img src="Mecenas.jpg" alt="Mecenas">
-                    <h2>Avatar: ARTé: Mecenas®</h2>
+                    <h2>ARTé: Mecenas®</h2>
                     <p>Triseum • C++ • Blueprint</p>
                 </div>
                 <!-- Más tarjetas... -->
@@ -284,7 +312,7 @@
         <!-- Detalle del proyecto -->
         <section id="project-detail" style="display:none;">
             <div class="background-image" id="project-bg"></div>
-            <div class="project-content">
+            <div class="project-content card"> <!-- Agrega la clase 'card' aquí -->
                 <button onclick="goBack()">← Back</button>
                 <h2 id="project-title"></h2>
                 <p id="project-description"></p>
@@ -297,39 +325,26 @@
         <section id="projects">
             <h2 class="section-title">Proyectos</h2>
             
-            <div class="card">
-                <h3 class="card-title">E-commerce Platform</h3>
-                <div class="card-meta">Plataforma completa de comercio electrónico</div>
-                <p>Desarrollé una plataforma de comercio electrónico completa con carrito de compras, procesamiento de pagos y gestión de inventario. Implementado con React para el frontend y Node.js/Express para el backend.</p>
+            <div class="card"><!--onclick="showProject('ShooterGame')">-->
+                <img src="ShooterGame.png" alt="Shooter Game">
+                <h3 class="card-title">ShooterGame</h3>
+                <div class="card-meta">The First Person Shooter sample is an example of a PC multiplayer first-person shooter. It includes basic implementations of weapons and gametypes along with a simple front end menu system.</div>
+                <p>Desarrolle nuevas armas como un pistola, escopeta y sniper con sus estilos de disparo. Adapte la UI para las nuevas armas. Cree pickups para las armas. Modifique el inventario para mas armas.</p>
                 <div class="tags">
-                    <span class="tag">React</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">MongoDB</span>
-                    <span class="tag">Stripe API</span>
+                    <span class="tag">Code comprehension</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">Blueprint</span>
+                    <span class="tag">UI</span>
                 </div>
             </div>
 
-            <div class="card">
-                <h3 class="card-title">Dashboard Analytics</h3>
-                <div class="card-meta">Panel de control para visualización de datos</div>
-                <p>Diseñé e implementé un panel de control interactivo para visualizar métricas comerciales clave. Incluye gráficos personalizables, filtros avanzados y exportación de datos.</p>
+            <div class="card"><!-- onclick="showProject('GASProject')">-->
+                <h3 class="card-title">GAS Project</h3>
+                <div class="card-meta">Gameplay Ability System (In Progress)</div>
+                <p>Estoy diseñando un proyecto con GAS, actualmente tiene Effects y Attributes. </p>
                 <div class="tags">
-                    <span class="tag">React</span>
-                    <span class="tag">D3.js</span>
-                    <span class="tag">Firebase</span>
-                    <span class="tag">Material UI</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3 class="card-title">Task Management App</h3>
-                <div class="card-meta">Aplicación de gestión de tareas estilo Kanban</div>
-                <p>Creé una aplicación de gestión de tareas con interfaz de arrastrar y soltar, recordatorios, etiquetas personalizables y colaboración en tiempo real.</p>
-                <div class="tags">
-                    <span class="tag">Vue.js</span>
-                    <span class="tag">Vuex</span>
-                    <span class="tag">Firebase</span>
-                    <span class="tag">Tailwind CSS</span>
+                    <span class="tag">Gameplay Effects</span>
+                    <span class="tag">Attributes</span>
                 </div>
             </div>
         </section>
