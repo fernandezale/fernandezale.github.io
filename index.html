@@ -256,9 +256,10 @@
         <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
         <div class="card">
             <h3 class="card-title">Alexis Fernandez</h3>
-            <div class="card-meta">Desarrollador de Unreal Engine 5 & Programador C++</div>
-            <p>Soy un apasionado desarrollador de Unreal Engine enfocado en crear mecanicas atractivas y herramientas.
-                Con experiencia en C++, blueprints, UMG y IA.</p>
+            <div class="card-meta">Unreal Engine developer & C++ programmer</div>
+            <p>
+                I'm a passionate Unreal Engine developer focused on creating engaging mechanics and tools. Experienced in C++, Blueprints, UMG, and AI.
+            </p>
                 <div class="contact-links">
                     <a href="mailto:alexis.ezequiel.fernandez.94@gmail.com" class="contact-link">
                         ✉️ alexis.ezequiel.fernandez.94@gmail.com
@@ -279,14 +280,13 @@
 
 
         <section id="about">
-            <h2 class="section-title">Sobre mí</h2>
+            <h2 class="section-title">About me</h2>
             <div class="card">
-                <p>
-                    Con más de 2 años de experiencia en desarrollo de videos juegos, he trabajado en proyectos que van desde mejoras de proyectos hasta juegos desarrollados desde cero.
-                    Me apasiona escribir código limpio y optimizado, y crear mecanicas de juego intuitivas y divertidas.
+                <p style="margin-bottom: 1.5em;">
+                    I am a game developer with over 2 years of experience working on projects ranging from enhancements to creating games from scratch. I am passionate about writing clean, efficient, and maintainable code, as well as designing intuitive, fun, and engaging gameplay mechanics.
                 </p>
                 <p>
-                    Cuando no estoy programando, disfruto de las caminatas, explorar nuevas tecnologías y aprender instrumentos musicales.
+                    Outside of development, I enjoy trekking, exploring new technologies, and learning to play musical instruments. I am always seeking new challenges and opportunities to grow both professionally and personally.
                 </p>
             </div>
         </section>
@@ -303,7 +303,7 @@
                 <div class="card" onclick="showProject('Mecenas')">
                     <img src="Mecenas.jpg" alt="Mecenas">
                     <h2>ARTé: Mecenas®</h2>
-                    <p>Triseum • C++ • Blueprint</p>
+                    <p>Triseum • C++ • Blueprint • UI • Custom Tool for designers</p>
                 </div>
                 <!-- Más tarjetas... -->
             </div>
@@ -323,29 +323,40 @@
         <script src="scripts.js"></script>
 
         <section id="projects">
-            <h2 class="section-title">Proyectos</h2>
-            
-            <div class="card"><!--onclick="showProject('ShooterGame')">-->
-                <img src="ShooterGame.png" alt="Shooter Game">
-                <h3 class="card-title">ShooterGame</h3>
-                <div class="card-meta">The First Person Shooter sample is an example of a PC multiplayer first-person shooter. It includes basic implementations of weapons and gametypes along with a simple front end menu system.</div>
-                <p>Desarrolle nuevas armas como un pistola, escopeta y sniper con sus estilos de disparo. Adapte la UI para las nuevas armas. Cree pickups para las armas. Modifique el inventario para mas armas.</p>
-                <div class="tags">
-                    <span class="tag">Code comprehension</span>
-                    <span class="tag">C++</span>
-                    <span class="tag">Blueprint</span>
-                    <span class="tag">UI</span>
+            <h2 class="section-title">Personal Projects</h2>
+            <div class="project-cards">
+                <div class="card" onclick="showPersonalProject('ShooterGame')">
+                    <img src="ShooterGame.png" alt="Shooter Game">
+                    <h3 class="card-title">ShooterGame</h3>
+                    <div class="card-meta">The First Person Shooter sample is an example of a PC multiplayer first-person shooter...</div>
+                    <p>I developed new weapons with their unique shooting styles...</p>
+                    <div class="tags">
+                        <span class="tag">Code comprehension</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">Blueprint</span>
+                        <span class="tag">UI</span>
+                    </div>
+                </div>
+                <div class="card" onclick="showPersonalProject('GASProject')">
+                    <h3 class="card-title">GAS Project</h3>
+                    <div class="card-meta">Gameplay Ability System (In Progress)</div>
+                    <p>Estoy diseñando un proyecto con GAS, actualmente tiene Effects y Attributes.</p>
+                    <div class="tags">
+                        <span class="tag">Gameplay Effects</span>
+                        <span class="tag">Attributes</span>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="card"><!-- onclick="showProject('GASProject')">-->
-                <h3 class="card-title">GAS Project</h3>
-                <div class="card-meta">Gameplay Ability System (In Progress)</div>
-                <p>Estoy diseñando un proyecto con GAS, actualmente tiene Effects y Attributes. </p>
-                <div class="tags">
-                    <span class="tag">Gameplay Effects</span>
-                    <span class="tag">Attributes</span>
-                </div>
+        <!-- Detalle del proyecto personal -->
+        <section id="personal-project-detail" style="display:none;">
+            <div class="background-image" id="personal-project-bg"></div>
+                <div class="project-content card">
+                    <button onclick="goBackPersonal()">← Back</button>
+                    <h2 id="personal-project-title"></h2>
+                    <p id="personal-project-description"></p>
+                <div id="personal-project-images"></div>
             </div>
         </section>
 
