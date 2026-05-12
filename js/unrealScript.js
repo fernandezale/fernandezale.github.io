@@ -2,20 +2,20 @@ const professionalProjectData = {
     'MySims': {
       title: 'My Sims: Cozy Bundle',
       description: 'Gameplay Programmer EA project using C++ and LUA.',
-      bg: 'MySims-Cozy-Bundle.jpg',
+      bg: '../assets/MySims-Cozy-Bundle.jpg',
       images: [
-        'MySims-1.png',
-        'MySims-2.png'
+        '../assets/MySims-1.png',
+        '../assets/MySims-2.png'
       ]
     },
     'Mecenas': {
       title: 'ARTé: Mecenas®',
       description: 'Game developed at TheOGs for Triseum/ Educative. Gameplay Programmer, UI and Tools using C++.',
-      bg: 'MecenasUEMenu.png',
+      bg: '../assets/MecenasUEMenu.png',
       images: [
-        'Mecenas-1.png',
-        'Mecenas-2.png',
-        'Mecenas-3.png'
+        '../assets/Mecenas-1.png',
+        '../assets/Mecenas-2.png',
+        '../assets/Mecenas-3.png'
       ]
     }
   };
@@ -26,10 +26,10 @@ const professionalProjectData = {
         description: 'I developed new weapons with their unique shooting styles, such as pistols, shotguns, and sniper rifles. Customize the UI for new weapons. Create pickups for weapons and ammo. Modify the inventory for more weapons.',
         bg: 'ShooterGame-bg.jpg',
         images: [
-            'ShooterGamePickups.png',
-            'ShooterGameShotgun.png',
-            'ShooterGameSniper1.png',
-            'ShooterGameSniper2.png'
+            '../assets/ShooterGamePickups.png',
+            '../assets/ShooterGameShotgun.png',
+            '../assets/ShooterGameSniper1.png',
+            '../assets/ShooterGameSniper2.png'
         ]
     },
     'GASProject': {

@@ -1,0 +1,13 @@
+:root {
+            /* Matrix Palette */
+            --matrix-black: #000000;
+            --matrix-dark-green: #003b00;
+            --matrix-medium-green: #008f11;
+            --matrix-bright-green: #00ff41;
+            
+            /* Unreal Palette */
+            --unreal-dark: #0e1117;
+            --unreal-blue: #0070f3;
+            --unreal-slate: #1f2937;
+            --unreal-gold: #f59e0b;
+        }

@@ -4,250 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alexis - Unreal Engine Portfolio</title>
-    <style>
-        /* Variables */
-        :root {
-            --background-color: #f5f5f5;
-            --text-color: #222;
-            --accent-color: #0070f3;
-            --border-color: #eaeaea;
-            --card-background: #fff;
-            --section-gap: 3rem;
-            --animation-duration: 0.2s;
-        }
-
-        /* Base styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
-            background-image: url('ue-placeholder-social.png'), url('ShooterGame.png'), url('UnrealEngine5.png'); /* Agrega las tres imágenes */
-            background-size: contain, contain, contain; /* Ajusta el tamaño de las imágenes */
-            background-position: top center, center center, bottom center; /* Posiciona las imágenes: arriba, centro y abajo */
-            background-repeat: no-repeat, no-repeat, no-repeat; /* Evita que las imágenes se repitan */
-            padding: 0;
-            margin: 0;
-        }
-
-        /* Content section */
-        .content {
-            padding: 2rem 1rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        h1, h2, h3 {
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        a {
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: color var(--animation-duration) ease;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Header */
-        header {
-            margin-bottom: var(--section-gap);
-        }
-
-        .name {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .tagline {
-            font-size: 1.25rem;
-            color: #555;
-            margin-bottom: 1.5rem;
-        }
-
-        .intro {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        /* Sections */
-        section {
-            margin-bottom: var(--section-gap);
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        /* Cards */
-        .card {
-            background-color: var(--card-background);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            transition: transform var(--animation-duration) ease, box-shadow var(--animation-duration) ease;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .card-meta {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 0.75rem;
-        }
-
-        .tags {
-            margin-top: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tag {
-            background-color: #eef2ff;
-            color: #4f46e5;
-            font-size: 0.8rem;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-        }
-
-        /* Contact */
-        .contact-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .contact-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        /* Skills */
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .skill-item {
-            background-color: var(--card-background);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            padding: 0.35rem 0.75rem;
-            font-size: 0.9rem;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 4rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* Theme toggle */
-        .theme-toggle {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            background: #fff;
-            border: 1px solid var(--border-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: background var(--animation-duration) ease;
-        }
-
-        /* Dark mode */
-        .dark-mode {
-            --background-color: #121212;
-            --text-color: #e0e0e0;
-            --border-color: #333;
-            --card-background: #1e1e1e;
-        }
-
-        .dark-mode .tag {
-            background-color: #2d2b55;
-            color: #a5b4fc;
-        }
-
-        .dark-mode .theme-toggle {
-            background: #333;
-        }
-
-        /* Responsive design */
-        @media (max-width: 600px) {
-            .name {
-                font-size: 2rem;
-            }
-
-            .tagline {
-                font-size: 1.1rem;
-            }
-
-            .card {
-                padding: 1.25rem;
-            }
-        }
-
-        .image-carousel {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-            padding: 1rem 0;
-            scroll-behavior: smooth;
-        }
-        .image-carousel img {
-            height: 480px;
-            width: 640px !important;      /* Sobrescribe cualquier width heredado */
-            max-width: 640px !important;  /* Sobrescribe cualquier max-width heredado */
-            max-height: 480px;
-            border-radius: 10px;
-            flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-            background: #fff;
-            display: block;
-        }
-
-        .card img {
-            display: block;
-            max-width: 80%;
-            width: auto;
-            height: auto;
-            margin: 0 auto;
-            border-radius: 8px;
-        }
-    </style>
+    <link href="../css/unrealStyles.css" rel="stylesheet">
 </head>
 <body>
 
@@ -270,7 +27,7 @@
                     <a href="https://linkedin.com/in/alexis-ezequiel-fernández-5738501a7" target="_blank" class="contact-link">
                         👥 LinkedIn
                     </a>
-                    <a href="CV_Alexis.pdf" target="_blank" class="contact-link">
+                    <a href="../assets/CV_Alexis.pdf" target="_blank" class="contact-link">
                         📄 CV
                     </a>
                 </div>
@@ -296,12 +53,12 @@
             <div class="project-cards">
                 <!-- Tarjeta de proyecto -->
                 <div class="card" onclick="showProject('MySims')">
-                    <img src="MySims-Cozy-Bundle (1).jpg" alt="My Sims Cozy Bundle">
+                    <img src="../assets/MySims-Cozy-Bundle (1).jpg" alt="My Sims Cozy Bundle">
                     <h2>My Sims Cozy Bundle</h2>
                     <p>TheOGs • EA • Custom Engine • C++ • Gameplay programmer • LUA</p>
                 </div>
                 <div class="card" onclick="showProject('Mecenas')">
-                    <img src="Mecenas.jpg" alt="Mecenas">
+                    <img src="../assets/Mecenas.jpg" alt="Mecenas">
                     <h2>ARTé: Mecenas®</h2>
                     <p>Triseum • C++ • Blueprint • UI • Custom Tool for designers</p>
                 </div>
@@ -320,13 +77,13 @@
             </div>
         </section>
 
-        <script src="scripts.js"></script>
+        <script src="../js/unrealScript.js"></script>
 
         <section id="projects">
             <h2 class="section-title">Personal Projects</h2>
             <div class="project-cards">
                 <div class="card" onclick="showPersonalProject('ShooterGame')">
-                    <img src="ShooterGame.png" alt="Shooter Game">
+                    <img src="../assets/ShooterGame.png" alt="Shooter Game">
                     <h3 class="card-title">ShooterGame</h3>
                     <div class="card-meta">The First Person Shooter sample is an example of a PC multiplayer first-person shooter...</div>
                     <p>I developed new weapons with their unique shooting styles...</p>
