@@ -126,6 +126,22 @@
             overflow-y: auto;
         }
 
+        /* Overlay transition effect for navigation */
+        .page-transition-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: black;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .page-transition-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
         .nav-back {
             position: fixed;
             top: 2rem;
@@ -157,16 +173,18 @@
 </head>
 <body>
 
+    <div id="transition-overlay" class="page-transition-overlay"></div>
+
     <div id="gateway-view">
         <div class="central-hero">
             <div class="hero-badge animate-fade">
-                <h1 class="text-4xl md:text-6xl font-black mb-2 tracking-tighter">TU NOMBRE</h1>
+                <h1 class="text-4xl md:text-6xl font-black mb-2 tracking-tighter">ALEXIS</h1>
                 <p class="text-sm md:text-base opacity-80 uppercase tracking-widest">Software Developer | Game Engines & Web Systems</p>
             </div>
         </div>
 
         <div class="split-container">
-            <!-- Full Stack Side -->
+            <!-- Lado Full Stack -->
             <div class="side side-fullstack" onclick="openPortfolio('fullstack')">
                 <div class="text-center z-10 px-6">
                     <h2 class="matrix-text text-3xl md:text-5xl font-bold mb-4">FULL STACK</h2>
@@ -174,7 +192,7 @@
                 </div>
             </div>
 
-            <!-- Unreal Side -->
+            <!-- Lado Unreal -->
             <div class="side side-unreal" onclick="openPortfolio('unreal')">
                 <div class="unreal-gradient"></div>
                 <div class="text-center z-10 px-6">
@@ -185,43 +203,19 @@
         </div>
     </div>
 
+    <!-- Vista temporal para Full Stack (hasta que tengas el archivo separado) -->
     <div id="fullstack-view" class="view-content" style="background-color: var(--matrix-black);">
         <button class="nav-back" onclick="closePortfolios()">← VOLVER AL INICIO</button>
         <div class="max-w-5xl mx-auto py-20 px-10">
             <h1 class="matrix-text text-6xl font-bold mb-8">System: Full Stack</h1>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Mock Project 1 -->
                 <div class="border border-[var(--matrix-dark-green)] p-6 rounded-lg hover:bg-[var(--matrix-dark-green)] transition-all">
                     <h3 class="matrix-text text-2xl mb-2">> E-Commerce API</h3>
                     <p class="text-[var(--matrix-medium-green)] mb-4">Node.js, React, PostgreSQL.</p>
-                    <div class="w-full h-40 bg-zinc-900 rounded mb-4 flex items-center justify-center text-[var(--matrix-dark-green)]">Project Preview</div>
                 </div>
-                <!-- Mock Project 2 -->
                 <div class="border border-[var(--matrix-dark-green)] p-6 rounded-lg hover:bg-[var(--matrix-dark-green)] transition-all">
                     <h3 class="matrix-text text-2xl mb-2">> Dashboard Analytics</h3>
                     <p class="text-[var(--matrix-medium-green)] mb-4">Python, Django, D3.js.</p>
-                    <div class="w-full h-40 bg-zinc-900 rounded mb-4 flex items-center justify-center text-[var(--matrix-dark-green)]">Project Preview</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="unreal-view" class="view-content" style="background-color: var(--unreal-dark);">
-        <button class="nav-back" onclick="closePortfolios()">← VOLVER AL INICIO</button>
-        <div class="max-w-5xl mx-auto py-20 px-10">
-            <h1 class="text-white text-6xl font-black italic mb-8 tracking-tighter underline decoration-blue-600">UNREAL PROJECTS</h1>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Mock Project 1 -->
-                <div class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-xl hover:border-blue-500 transition-all">
-                    <h3 class="text-white text-2xl font-bold mb-2 uppercase italic">Shadow Protocol</h3>
-                    <p class="text-blue-400 mb-4 font-bold">C++, Unreal Engine 5.3, Lumen.</p>
-                    <div class="w-full h-40 bg-zinc-900 rounded-lg mb-4 flex items-center justify-center text-zinc-700">Cinematic Trailer Placeholder</div>
-                </div>
-                <!-- Mock Project 2 -->
-                <div class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-xl hover:border-blue-500 transition-all">
-                    <h3 class="text-white text-2xl font-bold mb-2 uppercase italic">Terrain System</h3>
-                    <p class="text-blue-400 mb-4 font-bold">C++, Procedural Mesh, HLSL.</p>
-                    <div class="w-full h-40 bg-zinc-900 rounded-lg mb-4 flex items-center justify-center text-zinc-700">Technical Demo Placeholder</div>
                 </div>
             </div>
         </div>
@@ -229,30 +223,34 @@
 
     <script>
         function openPortfolio(type) {
-            // Hide gateway
-            document.getElementById('gateway-view').style.display = 'none';
+            if (type === 'unreal') {
+                // Efecto de transición antes de navegar
+                const overlay = document.getElementById('transition-overlay');
+                overlay.classList.add('active');
+                
+                // Pequeño retraso para que la transición se vea fluida
+                setTimeout(() => {
+                    window.location.href = './pages/PaginaUnreal.html';
+                }, 500);
+                
+            } else {
+                // Lógica interna para Full Stack
+                document.getElementById('gateway-view').style.display = 'none';
+                const view = document.getElementById(type + '-view');
+                view.style.display = 'block';
+                view.classList.add('animate-fade');
+            }
             
-            // Show selected view with animation
-            const view = document.getElementById(type + '-view');
-            view.style.display = 'block';
-            view.classList.add('animate-fade');
-            
-            // Log for debugging
-            console.log("Entering " + type + " portfolio space.");
+            console.log("Navegando al espacio de: " + type);
         }
 
         function closePortfolios() {
-            // Hide all views
             document.getElementById('fullstack-view').style.display = 'none';
-            document.getElementById('unreal-view').style.display = 'none';
-            
-            // Show gateway
             document.getElementById('gateway-view').style.display = 'block';
         }
 
-        // Handle browser resize or orientation change for mobile if needed
         window.addEventListener('resize', () => {
-            console.log("Viewport adjusted.");
+            console.log("Vista ajustada.");
         });
     </script>
 </body>
