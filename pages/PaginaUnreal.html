@@ -4,206 +4,200 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alexis - Unreal Engine Portfolio</title>
-    <link href="../css/unrealStyles.css" rel="stylesheet">
+    <!-- Fuentes desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Enlace a estilos -->
+    <link rel="stylesheet" href="../css/unrealStyles.css">
+    <style>
+        /* Estilos adicionales para la vista de detalle del script */
+        #project-detail, #personal-project-detail {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .detail-header {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            position: relative;
+            border: 1px solid var(--unreal-blue);
+        }
+
+        .detail-header::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 60%;
+            background: linear-gradient(to top, var(--unreal-dark), transparent);
+        }
+
+        .image-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .image-carousel img {
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid var(--unreal-slate);
+            transition: transform 0.3s ease;
+        }
+
+        .image-carousel img:hover {
+            transform: scale(1.05);
+            border-color: var(--unreal-blue);
+        }
+
+        /* Estilos para las miniaturas en las cards */
+        .card-image-container {
+            width: 100%;
+            height: 160px;
+            overflow: hidden;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            opacity: 0.8;
+        }
+
+        .card:hover .card-image-container img {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Main content -->
+    <!-- Botón para regresar a la landing central -->
+    <a href="../index.html" class="btn-back">
+        <span style="margin-right: 8px;">←</span> SALIR AL PORTAL
+    </a>
+
     <div class="content">
-        <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-        <div class="card">
-            <h3 class="card-title">Alexis Fernandez</h3>
-            <div class="card-meta">Unreal Engine developer & C++ programmer</div>
-            <p>
-                I'm a Unreal Engine developer focused on creating engaging mechanics and tools. Experienced in C++, Blueprints, UMG, and AI.
-            </p>
-                <div class="contact-links">
-                    <a href="mailto:alexis.ezequiel.fernandez.94@gmail.com" class="contact-link">
-                        ✉️ alexis.ezequiel.fernandez.94@gmail.com
-                    </a>
-                    <a href="https://github.com/fernandezale" target="_blank" class="contact-link">
-                        📂 GitHub
-                    </a>
-                    <a href="https://linkedin.com/in/alexis-ezequiel-fernández-5738501a7" target="_blank" class="contact-link">
-                        👥 LinkedIn
-                    </a>
-                    <a href="../assets/CV_Alexis.pdf" target="_blank" class="contact-link">
-                        📄 CV
-                    </a>
-                </div>
-        </div>
-       
-            
+        <!-- VISTA DE LISTA (OVERVIEW) -->
+        <div id="projects-overview">
+            <header>
+                <h1 class="name">ALEXIS FERNANDEZ</h1>
+                <p class="tagline">Game Developer // C++ Programmer</p>
+            </header>
 
-
-        <section id="about">
-            <h2 class="section-title">About me</h2>
-            <div class="card">
-                <p style="margin-bottom: 1.5em;">
-                    I am a game developer with over 3 years of experience working on projects ranging from enhancements to creating games from scratch. I am passionate about writing clean, efficient, and maintainable code, as well as designing intuitive, fun, and engaging gameplay mechanics.
-                </p>
+            <!-- Sección Sobre Mí -->
+            <div class="card" style="cursor: default;">
+                <h3 class="card-title">Perfil Técnico</h3>
+                <div class="card-meta">Core Engine & Gameplay</div>
                 <p>
-                    Outside of development, I enjoy trekking, exploring new technologies, and learning to play musical instruments. I am always seeking new challenges and opportunities to grow both professionally and personally.
+                    Especializado en el desarrollo de mecánicas complejas y sistemas de herramientas dentro de Unreal Engine. 
+                    Fuerte enfoque en arquitectura de código en C++, optimización de Blueprints y sistemas de IA.
                 </p>
+                <div class="tags">
+                    <span class="tag">Unreal Engine 5</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">Blueprints</span>
+                    <span class="tag">UMG</span>
+                </div>
             </div>
-        </section>
 
-        <section id="projects-overview">
-            <h1>Professional Projects</h1>
-            <div class="project-cards">
-                <!-- Tarjeta de proyecto -->
+            <!-- Proyectos Profesionales -->
+            <h2 style="margin: 3rem 0 1.5rem; text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; color: var(--unreal-blue);">Experiencia Profesional</h2>
+            <div class="grid-projects" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                <!-- My Sims -->
                 <div class="card" onclick="showProject('MySims')">
-                    <img src="../assets/MySims-Cozy-Bundle (1).jpg" alt="My Sims Cozy Bundle">
-                    <h2>My Sims Cozy Bundle</h2>
-                    <p>TheOGs • EA • Custom Engine • C++ • Gameplay programmer • LUA</p>
-                </div>
-                <div class="card" onclick="showProject('Mecenas')">
-                    <img src="../assets/Mecenas.jpg" alt="Mecenas">
-                    <h2>ARTé: Mecenas®</h2>
-                    <p>Triseum • C++ • Blueprint • UI • Custom Tool for designers</p>
-                </div>
-                <!-- Más tarjetas... -->
-            </div>
-        </section>
-
-        <!-- Detalle del proyecto -->
-        <section id="project-detail" style="display:none;">
-            <div class="background-image" id="project-bg"></div>
-            <div class="project-content card"> <!-- Agrega la clase 'card' aquí -->
-                <button onclick="goBack()">← Back</button>
-                <h2 id="project-title"></h2>
-                <p id="project-description"></p>
-                <div id="project-video-container"></div>
-            </div>
-        </section>
-
-        <script src="../js/unrealScript.js"></script>
-
-        <section id="projects">
-            <h2 class="section-title">Personal Projects</h2>
-            <div class="project-cards">
-                <div class="card" onclick="showPersonalProject('ShooterGame')">
-                    <img src="../assets/ShooterGame.png" alt="Shooter Game">
-                    <h3 class="card-title">ShooterGame</h3>
-                    <div class="card-meta">The First Person Shooter sample is an example of a PC multiplayer first-person shooter...</div>
-                    <p>I developed new weapons with their unique shooting styles...</p>
-                    <div class="tags">
-                        <span class="tag">Code comprehension</span>
-                        <span class="tag">C++</span>
-                        <span class="tag">Blueprint</span>
-                        <span class="tag">UI</span>
+                    <div class="card-image-container">
+                        <img src="../assets/MySims-Cozy-Bundle (1).jpg" alt="My Sims: Cozy Bundle Preview">
                     </div>
+                    <h3 class="card-title">My Sims: Cozy Bundle</h3>
+                    <div class="card-meta">Gameplay Programmer // EA</div>
+                    <p>Click para ver detalles del proyecto.</p>
+                </div>
+
+                <!-- ARTé: Mecenas -->
+                <div class="card" onclick="showProject('Mecenas')">
+                    <div class="card-image-container">
+                        <img src="../assets/MecenasUEMenu.png" alt="ARTé: Mecenas Preview">
+                    </div>
+                    <h3 class="card-title">ARTé: Mecenas®</h3>
+                    <div class="card-meta">Gameplay Programmer & UMG </div>
+                    <p>Click para ver detalles del proyecto.</p>
+                </div>
+            </div>
+
+            <!-- Proyectos Personales -->
+            <h2 style="margin: 3rem 0 1.5rem; text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; color: var(--unreal-blue);">Proyectos Personales</h2>
+            <div class="grid-projects" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                <div class="card" onclick="showPersonalProject('ShooterGame')">
+                    <div class="card-image-container">
+                        <img src="../assets/ShooterGame.png" alt="Shooter Game Preview">
+                    </div>
+                    <h3 class="card-title">Shooter Game</h3>
+                    <div class="card-meta">C++ // Weapons System</div>
                 </div>
                 <div class="card" onclick="showPersonalProject('GASProject')">
-                    <h3 class="card-title">GAS Project</h3>
-                    <div class="card-meta">Gameplay Ability System (In Progress)</div>
-                    <p>Estoy diseñando un proyecto con GAS, actualmente tiene Effects y Attributes.</p>
-                    <div class="tags">
-                        <span class="tag">Gameplay Effects</span>
-                        <span class="tag">Attributes</span>
+                    <div class="card-image-container">
+                        <img src="../assets/UnrealEngine5.png" alt="GAS System Preview">
                     </div>
+                    <h3 class="card-title">GAS System</h3>
+                    <div class="card-meta">Gameplay Ability System</div>
+                    <p>En proceso...</p>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Detalle del proyecto personal -->
-        <section id="personal-project-detail" style="display:none;">
-            <div class="background-image" id="personal-project-bg"></div>
-                <div class="project-content card">
-                    <button onclick="goBackPersonal()">← Back</button>
-                    <h2 id="personal-project-title"></h2>
-                    <p id="personal-project-description"></p>
-                <div id="personal-project-images"></div>
-            </div>
-        </section>
+        <!-- VISTA DE DETALLE PROFESIONAL -->
+        <div id="project-detail">
+            <button onclick="goBack()" class="tag" style="cursor:pointer; margin-bottom: 2rem; background: var(--unreal-slate);">← VOLVER A PROYECTOS</button>
+            <div id="project-bg" class="detail-header"></div>
+            <h1 id="project-title" class="name" style="font-size: 2.5rem; text-align: left;"></h1>
+            <p id="project-description" style="font-size: 1.2rem; margin-top: 1rem; color: #ccc;"></p>
+            <div id="video-container" class="image-carousel"></div>
+        </div>
 
-        <section id="skills">
-            <h2 class="section-title">Habilidades</h2>
-            <div class="skills-list">
-                <span class="skill-item">UnrealEngine</span>
-                <span class="skill-item">C++</span>
-                <span class="skill-item">Blueprint</span>
-                <span class="skill-item">UMG</span>
-                <span class="skill-item">HTML5</span>
-                <span class="skill-item">Python</span>
-                <span class="skill-item">LUA</span>
-                <span class="skill-item">Git</span>
-                <span class="skill-item">Fork</span>
-                <span class="skill-item">Perforce</span>
-            </div>
-        </section>
+        <!-- VISTA DE DETALLE PERSONAL -->
+        <div id="personal-project-detail">
+            <button onclick="goBackPersonal()" class="tag" style="cursor:pointer; margin-bottom: 2rem; background: var(--unreal-slate);">← VOLVER A PROYECTOS</button>
+            <div id="personal-project-bg" class="detail-header"></div>
+            <h1 id="personal-project-title" class="name" style="font-size: 2.5rem; text-align: left;"></h1>
+            <p id="personal-project-description" style="font-size: 1.2rem; margin-top: 1rem; color: #ccc;"></p>
+            <div id="personal-project-images" class="image-carousel"></div>
+        </div>
 
-        <section id="education">
-            <h2 class="section-title">Educación</h2>
-            
-            <div class="card">
-                <h3 class="card-title">Ingeniería en Electronica</h3>
-                <div class="card-meta">Universidad Tecnológica Nacional • 2012 - 2022</div>
-                <p>
-                    Especialización en Desarrollo de Software para sistemas embebidos.
-                    Proyecto de tesis: "Sistema automatizado para la reproduccion del Olivo mediante esquejes".
-                </p>
-            </div>
-        </section>
+        <!-- Footer con contacto -->
+        <footer class="contact-links" style="margin-top: 5rem; border-top: 1px solid var(--unreal-slate); padding-top: 2rem;">
+            <a href="mailto:alexis.ezequiel.fernandez.94@gmail.com" class="contact-link">EMAIL</a>
+            <a href="https://github.com/fernandezale" target="_blank" class="contact-link">GITHUB</a>
+            <a href="https://linkedin.com/in/alexis-ezequiel-fernández-5738501a7" target="_blank" class="contact-link">LINKEDIN</a>
+        </footer>
     </div>
 
-    <footer>
-        <p>© 2025 Alexis Ezequiel Fernandez. Todos los derechos reservados.</p>
-        <p>Hecho con ❤️ utilizando HTML, CSS y JavaScript</p>
-    </footer>
-
+    <!-- Cargar el script de lógica -->
+    <script src="../unrealScript.js"></script>
     <script>
-        // Theme toggle functionality
-        const themeToggle = document.querySelector('.theme-toggle');
-        const body = document.body;
-        
-        // Check for saved theme preference or respect OS preference
-        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const savedTheme = localStorage.getItem('theme');
-        
-        if (savedTheme === 'dark' || (!savedTheme && prefersDarkMode)) {
-            body.classList.add('dark-mode');
-            themeToggle.innerHTML = '☀️';
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            
-            if (body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-                themeToggle.innerHTML = '☀️';
-            } else {
-                localStorage.setItem('theme', 'light');
-                themeToggle.innerHTML = '🌙';
-            }
-        });
-        
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Add animation to cards when they enter viewport
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        document.querySelectorAll('.card').forEach(card => {
-            card.style.opacity = 0;
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(card);
-        });
+        // Pequeño parche para asegurar que el scroll suba al cambiar de vista
+        const originalShowProject = showProject;
+        showProject = function(key) {
+            originalShowProject(key);
+            window.scrollTo(0, 0);
+        };
+
+        const originalShowPersonal = showPersonalProject;
+        showPersonalProject = function(key) {
+            originalShowPersonal(key);
+            window.scrollTo(0, 0);
+        };
     </script>
 </body>
 </html>
