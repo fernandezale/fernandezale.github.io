@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="description" content="Portfolio en HTML">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Ink:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">Proyectos🤓</a></li>
+                <li><a href="#">Imagenes🖼️</a></li>
+                <li><a href="#">Videos🎞️</a></li>
+                <li><a href="pages/contacto.html">Contacto</a></li>
+               
+
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="inicio">
+            <h3>Acerca de mi</h3>
+            <p>Hola! Soy un <mark>desarrollador web</mark> apasionado por crear experiencias digitales prácticas y atractivas.</p>
+            <p>En este portfolio, encontrarás algunos de mis proyectos más destacados, así como una galería de imágenes que muestran mi trabajo y mi experiencia.</p>
+        </section>
+        <div class="container">
+            <div class="main-content">
+                <div class="proyectos" id="proyectos">
+                    <h3>Proyectos</h3>
+                    <div class="proyectos-content">
+                        <article class="card">
+                            <img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrlXa0O6s7Te3EaxJFujfksyAtNkJFnSqCtA&s"
+                            alt="Matrix door"
+                            />
+                            <div class="card-overlay">
+                                <h3>Calculadora</h3>
+                                <p>Una calculadora para sumar, restar, multiplicar y dividir. Su logica esta en JavaScript y es reutilizable</p>
+                                <button class="custom-button" id="btn-calculadora" type="button">Ver</button>
+                            </div>
+                        </article>
+                        <article class="card">
+                            <img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrlXa0O6s7Te3EaxJFujfksyAtNkJFnSqCtA&s"
+                            alt="Matrix door"
+                            />
+                            <div class="card-overlay">
+                                <h3>GYM WEB</h3>
+                                <p>Una landing para para un gimnasio hecha con bootstrap.</p>
+                                <button class="custom-button" id="btn-gymweb" type="button">Ver</button>
+                            </div>
+                        </article>
+                        <article class="card">
+                            <img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrlXa0O6s7Te3EaxJFujfksyAtNkJFnSqCtA&s"
+                            alt="Matrix door"
+                            />
+                            <div class="card-overlay">
+                                <h3>Dashboard de Criptomonedas</h3>
+                                <p>Un dashboard que muestra las criptomenas.</p>
+                                <button class="custom-button" type="button">Ver</button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <section id="estudios" class="tabla-estudios">
+                    <h3>Estudios realizados</h3>
+                    <table>
+                        <tr>
+                            <th>Año</th>
+                            <th>Institución</th>
+                            <th>Certificacion</th>
+                        </tr>
+                        <tr>
+                            <td>2012</td>
+                            <td>Colegio Tecnico Cassafoust</td>
+                            <td>Tecnico electricista</td>
+                        </tr>
+                        <tr>
+                            <td>2026</td>
+                            <td>RollingCode</td>
+                            <td>Desarrollador Web</td>
+                        </tr>
+                    </table>
+                </section>
+                <section id="habilidades" class="tabla-skills">
+                    <h3>Habilidades</h3>
+                    <table>
+                        <tr>
+                            <th>Lenguaje</th>
+                            <th>Nivel</th>
+                        </tr>
+                        <tr>
+                            <td>HTML</td>
+                            <td>Intermedio</td>
+                        </tr>
+                        <tr>
+                            <td>CSS</td>
+                            <td>Basico</td>
+                        </tr>
+                        <tr>
+                            <td>JavaScript</td>
+                            <td>Basico</td>
+                        </tr>
+                    </table>
+                </section>
+                <section id="video" class="video">
+                    <h3>Video de Presentación</h3>
+                    <iframe 
+                    width="560" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/3jeLIzNsK20?si=6zxxV3WSo8YIILPF&amp;controls=0"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </section>
+            </div> 
+                <aside class="sidebar">
+                    <h3>Tecnologias usadas</h3>
+                    <figure>
+                        <a href="https://www.w3schools.com/html/html5_intro.asp" target="_blank">
+                        <img src="assets/html-5.png" alt="HTML5 - Logo" width="100">
+                        </a>
+                    </figure>
+                    <figure>
+                        <a href="https://lenguajecss.com/css/#nociones-b%C3%A1sicas" target="_blank">
+                        <img src="assets/css3-logo.png" alt="CSS3 - Logo" width="100">
+                        </a>
+                    </figure>
+                    <!-- <figure>
+                        <a href="https://www.w3schools.com/js/js_intro.asp" target="_blank">
+                        <img src="assets/javascript.png" alt="JavaScript - Logo" width="100">
+                        </a>
+                    </figure> -->
+                    <p>Estas son algunas de las tecnologias que utilizo para crear mis proyectos.</p>
+                </aside>
+        </div>
+        
+
+    </main>
+
+    <footer>
+        <hr/>
+        <section class="navegacion-footer">
+            <h3>Navegación</h3>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Proyectos🤓</a></li>
+                <li><a href="#">Imagenes🖼️</a></li>
+                <li><a href="#">Videos🎞️</a></li>
+            </ul>
+        </section>
+        <a href="#" aria-level="Ir a mi perfil de Linkedin" target="_blank">Linkedin</a>
+        <a href="#" aria-level="Ir a mi perfil de GitHub" target="_blank">GitHub</a>
+        <section id="cv" class="descargar-cv">
+            <p> Para mas información, aqui esta mi CV</p>
+            <button class="custom-button" type="button">Descargar CV</button>
+        </section>
+        <section id="contacto" class="contacto">
+            <h3>Contacto</h3>
+            <p>Si deseas contactarme, puedes enviarme un correo electrónico a </p>
+        </section>
+        <p>&copy; 2026 - Creado con pasión por el código.</p>
+        <audio src="/assets/Hal.mp3" controls></audio>
+       
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
+<!-- Usar webp para las imagenes, es un formato de imagen moderno que ofrece una mejor compresión
+  y calidad que otros formatos como JPEG o PNG.
+   Esto puede ayudar a reducir el tamaño de las imágenes
+    y mejorar el rendimiento del sitio web. -->
