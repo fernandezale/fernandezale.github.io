@@ -57,6 +57,13 @@
             background: linear-gradient(180deg, rgba(0, 255, 65, 0.05) 0%, transparent 100%);
             pointer-events: none;
         }
+        .fullstack-gradient {
+            background: radial-gradient(circle at center, rgba(6, 173, 1, 0.15) 0%, transparent 70%);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0; left: 0;
+        }
         
         .matrix-text {
             font-family: 'Fira Code', monospace;
@@ -179,6 +186,7 @@
         <div class="split-container">
             <!-- Lado Full Stack -->
             <div class="side side-fullstack" onclick="openPortfolio('fullstack')">
+                <div class="fullstack-gradient"></div>
                 <div class="text-center z-10 px-6">
                     <h2 class="matrix-text text-3xl md:text-5xl font-bold mb-4">FRONTEND</h2>
                     <p class="matrix-text opacity-70 text-xs md:text-sm">INDEX.HTML</p>
@@ -197,7 +205,7 @@
     </div>
 
     <!-- Vista temporal para Full Stack (hasta que tengas el archivo separado) -->
-    <div id="fullstack-view" class="view-content" style="background-color: var(--matrix-black);">
+    <!-- <div id="fullstack-view" class="view-content" style="background-color: var(--matrix-black);">
         <button class="nav-back" onclick="closePortfolios()"> VOLVER AL INICIO > </button>
         <div class="max-w-5xl mx-auto py-20 px-10">
             <h1 class="matrix-text text-6xl font-bold mb-8">System: Full Stack</h1>
@@ -212,34 +220,31 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <script>
         function openPortfolio(type) {
             if (type === 'unreal') {
-                // Efecto de transición antes de navegar
+                // Efecto de transici0n antes de navegar
                 const overlay = document.getElementById('transition-overlay');
                 overlay.classList.add('active');
                 
-                // Pequeño retraso para que la transición se vea fluida
+                // Pequeno retraso para que la transici0n se vea fluida
                 setTimeout(() => {
                     window.location.href = './pages/PaginaUnreal.html';
                 }, 500);
                 
-            } else {
-                // Lógica interna para Full Stack
-                document.getElementById('gateway-view').style.display = 'none';
-                const view = document.getElementById(type + '-view');
-                view.style.display = 'block';
-                view.classList.add('animate-fade');
+            } 
+            else {//Full Stack
+                const overlay = document.getElementById('transition-overlay');
+                overlay.classList.add('active');
+                
+                setTimeout(() => {
+                    window.location.href = './pages/PaginaFrontend.html';
+                }, 500);
             }
             
             console.log("Navegando al espacio de: " + type);
-        }
-
-        function closePortfolios() {
-            document.getElementById('fullstack-view').style.display = 'none';
-            document.getElementById('gateway-view').style.display = 'block';
         }
 
         window.addEventListener('resize', () => {
