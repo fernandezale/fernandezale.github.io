@@ -12,13 +12,11 @@ btcGymweb.addEventListener('click', () =>{
 const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
 
-        // Configuración de la lluvia
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@%&*()ｦｱｳｴｵｶｷｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ";
         const fontSize = 18;
         let columns;
         let drops = [];
 
-        // Ajustar el canvas al tamaño de la ventana
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;

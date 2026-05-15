@@ -29,14 +29,14 @@
     <div class="overlay"></div>
     <main>
         <section id="inicio" class="inicio">
-            <h3>Acerca de mi</h3>
+            <h2>Acerca de mi</h2>
             <p>Hola! Soy un <mark>desarrollador web</mark> apasionado por crear experiencias digitales prácticas y atractivas.</p>
             <p>En este portfolio, encontrarás algunos de mis proyectos más destacados, así como una galería de imágenes que muestran mi trabajo y mi experiencia.</p>
         </section>
         <div class="container">
             <div class="main-content">
                 <div class="proyectos" id="proyectos">
-                    <h3>Proyectos</h3>
+                    <h2>Proyectos</h2>
                     <div class="proyectos-content">
                         <article class="card">
                             <img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrlXa0O6s7Te3EaxJFujfksyAtNkJFnSqCtA&s"
@@ -63,15 +63,15 @@
                             alt="Matrix door"
                             />
                             <div class="card-overlay">
-                                <h3>Dashboard de Criptomonedas</h3>
-                                <p>Un dashboard que muestra las criptomenas.</p>
+                                <h3>Streaming Web</h3>
+                                <p>Proximamente...</p>
                                 <button class="custom-button" type="button">Ver</button>
                             </div>
                         </article>
                     </div>
                 </div>
                 <section id="estudios" class="tabla-estudios">
-                    <h3>Estudios realizados</h3>
+                    <h2>Estudios realizados</h2>
                     <table>
                         <tr>
                             <th>Año</th>
@@ -91,7 +91,7 @@
                     </table>
                 </section>
                 <section id="habilidades" class="tabla-skills">
-                    <h3>Habilidades</h3>
+                    <h2>Habilidades</h2>
                     <table>
                         <tr>
                             <th>Lenguaje</th>
@@ -111,7 +111,7 @@
                         </tr>
                     </table>
                 </section>
-                <section id="video" class="video">
+                <!-- <section id="video" class="video">
                     <h3>Video de Presentación</h3>
                     <iframe 
                     width="560" 
@@ -120,116 +120,26 @@
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </section>
+                </section> -->
             </div> 
-                <aside class="sidebar">
-                    <h3>Tecnologias usadas</h3>
-                    <figure>
-                        <a href="https://www.w3schools.com/html/html5_intro.asp" target="_blank">
-                        <img src="assets/html-5.png" alt="HTML5 - Logo" width="100">
-                        </a>
-                    </figure>
-                    <figure>
-                        <a href="https://lenguajecss.com/css/#nociones-b%C3%A1sicas" target="_blank">
-                        <img src="assets/css3-logo.png" alt="CSS3 - Logo" width="100">
-                        </a>
-                    </figure>
-                    <!-- <figure>
-                        <a href="https://www.w3schools.com/js/js_intro.asp" target="_blank">
-                        <img src="assets/javascript.png" alt="JavaScript - Logo" width="100">
-                        </a>
-                    </figure> -->
-                    <p>Estas son algunas de las tecnologias que utilizo para crear mis proyectos.</p>
-                </aside>
         </div>
         
 
     </main>
 
     <footer>
-        <a href="#" aria-level="Ir a mi perfil de Linkedin" target="_blank">Linkedin</a>
-        <a href="#" aria-level="Ir a mi perfil de GitHub" target="_blank">GitHub</a>
+        <h2>Contacto</h2>
+        <section id="contacto" class="contacto">
+            <a href="#" aria-level="Ir a mi perfil de Linkedin" target="_blank">Linkedin</a>
+            <a href="#" aria-level="Ir a mi perfil de GitHub" target="_blank">GitHub</a>
+        </section>
         <section id="cv" class="descargar-cv">
             <p> Para mas información, aqui esta mi CV</p>
             <button class="custom-button" type="button">Descargar CV</button>
         </section>
-        <section id="contacto" class="contacto">
-            <h3>Contacto</h3>
-            <p>Si deseas contactarme, puedes enviarme un correo electrónico a </p>
-        </section>
         <p>&copy; 2026 - Creado con pasión por el código.</p>
-        <audio src="../assets/Hal.mp3" controls></audio>
        
     </footer>
     <script src="../js/frontendScript.js"></script>
-    <script>
-        // const canvas = document.getElementById('matrixCanvas');
-        // const ctx = canvas.getContext('2d');
-
-        // // Configuración de la lluvia
-        // const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@%&*()ｦｱｳｴｵｶｷｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ";
-        // const fontSize = 18;
-        // let columns;
-        // let drops = [];
-
-        // // Ajustar el canvas al tamaño de la ventana
-        // function resizeCanvas() {
-        //     canvas.width = window.innerWidth;
-        //     canvas.height = window.innerHeight;
-            
-        //     // Recalcular columnas según el ancho y tamaño de fuente
-        //     columns = Math.floor(canvas.width / fontSize);
-            
-        //     // Inicializar o reajustar las posiciones de las gotas (drops)
-        //     // drops[i] guarda la coordenada Y de la gota en la columna i
-        //     drops = [];
-        //     for (let i = 0; i < columns; i++) {
-        //         drops[i] = Math.random() * -100; // Inicio aleatorio fuera de pantalla para naturalidad
-        //     }
-        // }
-
-        // function draw() {
-        //     // Fondo semi-transparente para crear el efecto de estela (trail)
-        //     ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-        //     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        //     // Estilo de los caracteres
-        //     ctx.fillStyle = "#00ff41"; // Color verde Matrix clásico
-        //     ctx.font = fontSize + "px monospace";
-
-        //     // Dibujar los caracteres
-        //     for (let i = 0; i < drops.length; i++) {
-        //         // Seleccionar un caracter aleatorio
-        //         const text = characters.charAt(Math.floor(Math.random() * characters.length));
-                
-        //         // x = posición de columna, y = posición de la gota
-        //         const x = i * fontSize;
-        //         const y = drops[i] * fontSize;
-
-        //         ctx.fillText(text, x, y);
-
-        //         // Reiniciar la gota al inicio con una probabilidad aleatoria cuando sale de pantalla
-        //         if (y > canvas.height && Math.random() > 0.975) {
-        //             drops[i] = 0;
-        //         }
-
-        //         // Mover la gota hacia abajo
-        //         drops[i]++;
-        //     }
-        // }
-
-        // // Eventos y bucle de animación
-        // window.addEventListener('resize', resizeCanvas);
-        
-        // // Inicialización
-        // resizeCanvas();
-        
-        // // Ejecutar a ~30 cuadros por segundo para un look cinematográfico
-        // setInterval(draw, 35);
-    </script>
 </body>
 </html>
-<!-- Usar webp para las imagenes, es un formato de imagen moderno que ofrece una mejor compresión
-  y calidad que otros formatos como JPEG o PNG.
-   Esto puede ayudar a reducir el tamaño de las imágenes
-    y mejorar el rendimiento del sitio web. -->
