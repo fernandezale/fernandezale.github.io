@@ -38,6 +38,27 @@ body {
     margin: 30px;
 }
 
+
+#matrixCanvas {
+    position: fixed; /* O absolute, si solo lo quieres en una sección */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+/* Capa opcional para un efecto de brillo/glow */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 20%, black 150%);
+    pointer-events: none;
+}
+
 .menu {
     color: var(--matrix-bright-green);
     border: 1px solid var(--matrix-medium-green);

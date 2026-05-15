@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <meta name="description" content="Portfolio en HTML">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../css/globalStyles.css">
+    <link rel="stylesheet" href="../css/frontendStyles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitcount+Ink:wght@100..900&display=swap" rel="stylesheet">
@@ -18,13 +19,14 @@
                 <li><a href="#">Proyectos🤓</a></li>
                 <li><a href="#">Imagenes🖼️</a></li>
                 <li><a href="#">Videos🎞️</a></li>
-                <li><a href="pages/contacto.html">Contacto</a></li>
+                <li><a href="#">Contacto</a></li>
                
 
             </ul>
         </nav>
     </header>
-
+    <canvas id="matrixCanvas"></canvas>
+    <div class="overlay"></div>
     <main>
         <section id="inicio" class="inicio">
             <h3>Acerca de mi</h3>
@@ -145,16 +147,6 @@
     </main>
 
     <footer>
-        <hr/>
-        <section class="navegacion-footer">
-            <h3>Navegación</h3>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Proyectos🤓</a></li>
-                <li><a href="#">Imagenes🖼️</a></li>
-                <li><a href="#">Videos🎞️</a></li>
-            </ul>
-        </section>
         <a href="#" aria-level="Ir a mi perfil de Linkedin" target="_blank">Linkedin</a>
         <a href="#" aria-level="Ir a mi perfil de GitHub" target="_blank">GitHub</a>
         <section id="cv" class="descargar-cv">
@@ -166,10 +158,75 @@
             <p>Si deseas contactarme, puedes enviarme un correo electrónico a </p>
         </section>
         <p>&copy; 2026 - Creado con pasión por el código.</p>
-        <audio src="/assets/Hal.mp3" controls></audio>
+        <audio src="../assets/Hal.mp3" controls></audio>
        
     </footer>
-    <script src="js/main.js"></script>
+    <script src="../js/frontendScript.js"></script>
+    <script>
+        // const canvas = document.getElementById('matrixCanvas');
+        // const ctx = canvas.getContext('2d');
+
+        // // Configuración de la lluvia
+        // const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@%&*()ｦｱｳｴｵｶｷｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ";
+        // const fontSize = 18;
+        // let columns;
+        // let drops = [];
+
+        // // Ajustar el canvas al tamaño de la ventana
+        // function resizeCanvas() {
+        //     canvas.width = window.innerWidth;
+        //     canvas.height = window.innerHeight;
+            
+        //     // Recalcular columnas según el ancho y tamaño de fuente
+        //     columns = Math.floor(canvas.width / fontSize);
+            
+        //     // Inicializar o reajustar las posiciones de las gotas (drops)
+        //     // drops[i] guarda la coordenada Y de la gota en la columna i
+        //     drops = [];
+        //     for (let i = 0; i < columns; i++) {
+        //         drops[i] = Math.random() * -100; // Inicio aleatorio fuera de pantalla para naturalidad
+        //     }
+        // }
+
+        // function draw() {
+        //     // Fondo semi-transparente para crear el efecto de estela (trail)
+        //     ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        //     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        //     // Estilo de los caracteres
+        //     ctx.fillStyle = "#00ff41"; // Color verde Matrix clásico
+        //     ctx.font = fontSize + "px monospace";
+
+        //     // Dibujar los caracteres
+        //     for (let i = 0; i < drops.length; i++) {
+        //         // Seleccionar un caracter aleatorio
+        //         const text = characters.charAt(Math.floor(Math.random() * characters.length));
+                
+        //         // x = posición de columna, y = posición de la gota
+        //         const x = i * fontSize;
+        //         const y = drops[i] * fontSize;
+
+        //         ctx.fillText(text, x, y);
+
+        //         // Reiniciar la gota al inicio con una probabilidad aleatoria cuando sale de pantalla
+        //         if (y > canvas.height && Math.random() > 0.975) {
+        //             drops[i] = 0;
+        //         }
+
+        //         // Mover la gota hacia abajo
+        //         drops[i]++;
+        //     }
+        // }
+
+        // // Eventos y bucle de animación
+        // window.addEventListener('resize', resizeCanvas);
+        
+        // // Inicialización
+        // resizeCanvas();
+        
+        // // Ejecutar a ~30 cuadros por segundo para un look cinematográfico
+        // setInterval(draw, 35);
+    </script>
 </body>
 </html>
 <!-- Usar webp para las imagenes, es un formato de imagen moderno que ofrece una mejor compresión
