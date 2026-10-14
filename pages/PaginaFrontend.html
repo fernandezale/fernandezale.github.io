@@ -1,145 +1,378 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <meta name="description" content="Portfolio en HTML">
-    <link rel="stylesheet" href="../css/globalStyles.css">
-    <link rel="stylesheet" href="../css/frontendStyles.css">
+    <title>Alexis | Frontend Developer Portfolio</title>
+    <meta name="description" content="Portfolio de desarrollo Frontend y proyectos interactivos de Alexis.">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Ink:wght@100..900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/globalStyles.css">
+    <link rel="stylesheet" href="../css/frontendStyles.css">
 </head>
 <body>
-    <header>
-        <nav class="menu">
-            <ul>
-                <li><a href="#">Proyectos🤓</a></li>
-                <li><a href="#">Imagenes🖼️</a></li>
-                <li><a href="#">Videos🎞️</a></li>
-                <li><a href="#">Contacto</a></li>
-               
-
-            </ul>
-        </nav>
-    </header>
+    <!-- Canvas de lluvia Matrix de fondo -->
     <canvas id="matrixCanvas"></canvas>
     <div class="overlay"></div>
+
+    <!-- Barra de navegación fija con efecto glassmorphism -->
+    <header>
+        <div class="nav-container">
+            <a href="#inicio" class="nav-brand">
+                <span class="prompt-symbol">&gt;_</span>
+                <span>ALEXIS</span>
+                <span class="badge-tag">FRONTEND</span>
+            </a>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú de navegación" type="button">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio" class="nav-link"><i class="bi bi-terminal"></i> Inicio</a></li>
+                <li><a href="#proyectos" class="nav-link"><i class="bi bi-code-slash"></i> Proyectos</a></li>
+                <li><a href="#habilidades" class="nav-link"><i class="bi bi-cpu"></i> Habilidades</a></li>
+                <li><a href="#estudios" class="nav-link"><i class="bi bi-mortarboard"></i> Formación</a></li>
+                <li><a href="#contacto" class="nav-link"><i class="bi bi-envelope"></i> Contacto</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="../index.html" class="btn-portal" title="Regresar al selector de universos">
+                    <i class="bi bi-arrow-left"></i>
+                    <span>Portal</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
     <main>
-        <section id="inicio" class="inicio">
-            <h2>Acerca de mi</h2>
-            <p>Hola! Soy un <mark>desarrollador web</mark> apasionado por crear experiencias digitales prácticas y atractivas.</p>
-            <p>En este portfolio, encontrarás algunos de mis proyectos más destacados, así como una galería de imágenes que muestran mi trabajo y mi experiencia.</p>
+        <!-- Hero / Acerca de mí -->
+        <section id="inicio" class="hero-section">
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                <span>DISPONIBLE PARA NUEVOS PROYECTOS</span>
+            </div>
+
+            <h1 class="hero-title">
+                Hola, soy <span class="hero-highlight">Alexis</span>
+            </h1>
+
+            <div class="hero-subtitle">
+                <i class="bi bi-chevron-right"></i>
+                <span>Desarrollador Web Frontend &amp; Creador Digital</span>
+            </div>
+
+            <p class="hero-description">
+                Apasionado por construir interfaces web interactivas, dinámicas y funcionales. 
+                Combino la estética del código limpio con soluciones prácticas en <mark>JavaScript moderno</mark>, 
+                diseño responsivo y componentes modulares. Explora aquí mis trabajos y utilidades frontend.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#proyectos" class="btn btn-primary">
+                    <i class="bi bi-grid-fill"></i>
+                    <span>Ver Proyectos</span>
+                </a>
+                <a href="../assets/AlexisF_CV_FrontEnd.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    <i class="bi bi-file-earmark-pdf"></i>
+                    <span>Descargar CV</span>
+                </a>
+            </div>
         </section>
-        <div class="container">
-            <div class="main-content">
-                <div class="proyectos" id="proyectos">
-                    <h2>Proyectos</h2>
-                    <div class="proyectos-content">
-                        <article class="card">
-                            <img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrlXa0O6s7Te3EaxJFujfksyAtNkJFnSqCtA&s"
-                            alt="Matrix door"
-                            />
-                            <div class="card-overlay">
-                                <h3>Calculadora</h3>
-                                <p>Una calculadora para sumar, restar, multiplicar y dividir. Su logica esta en JavaScript y es reutilizable</p>
-                                <button class="custom-button" id="btn-calculadora" type="button">Ver</button>
-                            </div>
-                        </article>
-                        <article class="card">
-                            <img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrlXa0O6s7Te3EaxJFujfksyAtNkJFnSqCtA&s"
-                            alt="Matrix door"
-                            />
-                            <div class="card-overlay">
-                                <h3>GYM WEB</h3>
-                                <p>Una landing para para un gimnasio hecha con bootstrap.</p>
-                                <button class="custom-button" id="btn-gymweb" type="button">Ver</button>
-                            </div>
-                        </article>
-                        <article class="card">
-                            <img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrlXa0O6s7Te3EaxJFujfksyAtNkJFnSqCtA&s"
-                            alt="Matrix door"
-                            />
-                            <div class="card-overlay">
-                                <h3>Streaming Web</h3>
-                                <p>Proximamente...</p>
-                                <button class="custom-button" type="button">Ver</button>
-                            </div>
-                        </article>
+
+        <!-- Proyectos -->
+        <section id="proyectos">
+            <div class="section-header">
+                <span class="section-tag">// 01. PORTFOLIO</span>
+                <h2 class="section-title">Proyectos Destacados</h2>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Card 1: Calculadora -->
+                <article class="project-card">
+                    <div class="card-header-visual">
+                        <div class="mockup-preview">
+                            <div class="mockup-pattern"></div>
+                            <i class="bi bi-calculator-fill mockup-icon"></i>
+                        </div>
+                        <span class="card-category-badge">
+                            <i class="bi bi-braces"></i> Web App
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <span>Calculadora JS</span>
+                            <i class="bi bi-arrow-up-right-circle text-muted"></i>
+                        </h3>
+                        <p class="card-description">
+                            Calculadora modular interactiva desarrollada con JavaScript orientado a objetos (ES6 Modules). 
+                            Lógica desacoplada para operaciones aritméticas básicas y visualización estilo terminal.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tech-tag">JavaScript ES6</span>
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS Grid</span>
+                            <span class="tech-tag">OOP</span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary btn-sm" id="btn-calculadora" type="button">
+                                <i class="bi bi-play-circle-fill"></i>
+                                <span>Probar Demo</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2: Gym Web -->
+                <article class="project-card">
+                    <div class="card-header-visual">
+                        <div class="mockup-preview">
+                            <div class="mockup-pattern"></div>
+                            <i class="bi bi-lightning-charge-fill mockup-icon"></i>
+                        </div>
+                        <span class="card-category-badge">
+                            <i class="bi bi-bootstrap"></i> Landing Page
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <span>GYM GOL Landing</span>
+                            <i class="bi bi-arrow-up-right-circle text-muted"></i>
+                        </h3>
+                        <p class="card-description">
+                            Landing page moderna y comercial para un gimnasio de alto rendimiento. 
+                            Diseño 100% responsivo con Bootstrap 5, carrusel inmersivo, catálogo de actividades y cotizador de planes.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tech-tag">Bootstrap 5</span>
+                            <span class="tech-tag">Responsive</span>
+                            <span class="tech-tag">UI/UX</span>
+                            <span class="tech-tag">CSS3</span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary btn-sm" id="btn-gymweb" type="button">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                                <span>Ver Landing</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3: Streaming Web -->
+                <article class="project-card">
+                    <div class="card-header-visual">
+                        <div class="mockup-preview">
+                            <div class="mockup-pattern"></div>
+                            <i class="bi bi-film mockup-icon"></i>
+                        </div>
+                        <span class="card-category-badge">
+                            <i class="bi bi-hourglass-split"></i> En Progreso
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <span>Streaming Platform</span>
+                            <i class="bi bi-clock-history text-muted"></i>
+                        </h3>
+                        <p class="card-description">
+                            Plataforma de streaming multimedia enfocada en la navegación fluida, categorización de películas y series, 
+                            reproductor personalizado y consumo dinámico de APIs de video.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tech-tag">En Desarrollo</span>
+                            <span class="tech-tag">API Rest</span>
+                            <span class="tech-tag">Async JS</span>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-outline btn-sm" type="button" disabled style="opacity: 0.6; cursor: not-allowed;">
+                                <i class="bi bi-gear-wide-connected"></i>
+                                <span>Próximamente</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Habilidades Técnicas -->
+        <section id="habilidades">
+            <div class="section-header">
+                <span class="section-tag">// 02. STACK TECNOLÓGICO</span>
+                <h2 class="section-title">Habilidades &amp; Herramientas</h2>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="bi bi-filetype-html"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">HTML5</h3>
+                        <span class="skill-level-text">Semántica &amp; Accesibilidad</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
                     </div>
                 </div>
-                <section id="estudios" class="tabla-estudios">
-                    <h2>Estudios realizados</h2>
-                    <table>
-                        <tr>
-                            <th>Año</th>
-                            <th>Institución</th>
-                            <th>Certificacion</th>
-                        </tr>
-                        <tr>
-                            <td>2012</td>
-                            <td>Colegio Tecnico Cassafoust</td>
-                            <td>Tecnico electricista</td>
-                        </tr>
-                        <tr>
-                            <td>2026</td>
-                            <td>RollingCode</td>
-                            <td>Desarrollador Web</td>
-                        </tr>
-                    </table>
-                </section>
-                <section id="habilidades" class="tabla-skills">
-                    <h2>Habilidades</h2>
-                    <table>
-                        <tr>
-                            <th>Lenguaje</th>
-                            <th>Nivel</th>
-                        </tr>
-                        <tr>
-                            <td>HTML</td>
-                            <td>Intermedio</td>
-                        </tr>
-                        <tr>
-                            <td>CSS</td>
-                            <td>Basico</td>
-                        </tr>
-                        <tr>
-                            <td>JavaScript</td>
-                            <td>Basico</td>
-                        </tr>
-                    </table>
-                </section>
-                <!-- <section id="video" class="video">
-                    <h3>Video de Presentación</h3>
-                    <iframe 
-                    width="560" 
-                    height="315" 
-                    src="https://www.youtube.com/embed/3jeLIzNsK20?si=6zxxV3WSo8YIILPF&amp;controls=0"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </section> -->
-            </div> 
-        </div>
-        
 
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="bi bi-filetype-css"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">CSS3</h3>
+                        <span class="skill-level-text">Flexbox, Grid &amp; Animaciones</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="bi bi-filetype-js"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">JavaScript ES6+</h3>
+                        <span class="skill-level-text">DOM, Módulos &amp; Lógica</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="bi bi-bootstrap-fill"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Bootstrap 5</h3>
+                        <span class="skill-level-text">Sistemas Grid &amp; Componentes</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="bi bi-git"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Git &amp; GitHub</h3>
+                        <span class="skill-level-text">Control de Versiones &amp; Despliegues</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">Responsive Design</h3>
+                        <span class="skill-level-text">Adaptabilidad Multi-dispositivo</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formación y Certificaciones -->
+        <section id="estudios">
+            <div class="section-header">
+                <span class="section-tag">// 03. TRAYECTORIA</span>
+                <h2 class="section-title">Formación Realizada</h2>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-year">2026</span>
+                            <span class="timeline-institution"><i class="bi bi-building"></i> RollingCode</span>
+                        </div>
+                        <h3 class="timeline-role">Desarrollador Web</h3>
+                        <p class="timeline-desc">
+                            Formación integral en diseño web frontend, estructuras semánticas modernas, 
+                            arquitectura CSS, programación con JavaScript y metodologías de desarrollo.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-year">2012</span>
+                            <span class="timeline-institution"><i class="bi bi-mortarboard-fill"></i> Colegio Técnico Cassafoust</span>
+                        </div>
+                        <h3 class="timeline-role">Técnico Electricista</h3>
+                        <p class="timeline-desc">
+                            Bases sólidas de lógica técnica, análisis de circuitos, resolución sistemática de problemas 
+                            y precisión en la ejecución de proyectos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section id="contacto">
+            <div class="section-header">
+                <span class="section-tag">// 04. CONEXIÓN</span>
+                <h2 class="section-title">Contacto</h2>
+            </div>
+
+            <div class="contact-card">
+                <h3>¿Listo para colaborar o ver mi código?</h3>
+                <p>
+                    Puedes explorar mis repositorios, conectarte en redes profesionales o revisar mi currículum en formato PDF.
+                </p>
+
+                <div class="contact-links">
+                    <a href="https://github.com/fernandezale" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                        <i class="bi bi-github"></i>
+                        <span>GitHub Profile</span>
+                    </a>
+                    <a href="https://linkedin.com/in/alexis-ezequiel-fernández-5738501a7" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                        <i class="bi bi-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="../assets/AlexisF_CV_FrontEnd.pdf" target="_blank" rel="noopener noreferrer" download="CV_Alexis.pdf" class="contact-btn">
+                        <i class="bi bi-file-earmark-pdf-fill"></i>
+                        <span>Descargar CV</span>
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <h2>Contacto</h2>
-        <section id="contacto" class="contacto">
-            <a href="#" aria-level="Ir a mi perfil de Linkedin" target="_blank">Linkedin</a>
-            <a href="#" aria-level="Ir a mi perfil de GitHub" target="_blank">GitHub</a>
-        </section>
-        <section id="cv" class="descargar-cv">
-            <p> Para mas información, aqui esta mi CV</p>
-            <button class="custom-button" type="button">Descargar CV</button>
-        </section>
-        <p>&copy; 2026 - Creado con pasión por el código.</p>
-       
+        <div class="footer-content">
+            <p>&copy; 2026 Alexis // Frontend Developer — Desarrollado con hambre de código.</p>
+            <a href="#inicio" class="footer-back-to-top">
+                <i class="bi bi-arrow-up-circle"></i>
+                <span>Volver al inicio</span>
+            </a>
+        </div>
     </footer>
+
+    <!-- Scripts -->
     <script src="../js/frontendScript.js"></script>
 </body>
 </html>

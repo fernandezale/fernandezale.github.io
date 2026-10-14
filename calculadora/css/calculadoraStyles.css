@@ -1,45 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap');
+
 :root {
-    --matrix-black: #000000;
+    --matrix-black: #060907;
+    --matrix-card-bg: rgba(10, 18, 12, 0.95);
     --matrix-dark-green: #003b00;
     --matrix-medium-green: #008f11;
     --matrix-bright-green: #00ff41;
-    --matrix-font: 'Courier New', Courier, monospace;
+    --matrix-glow: rgba(0, 255, 65, 0.35);
+    --matrix-font: 'Fira Code', 'Courier New', monospace;
     font-size: 15px;
-    
 }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     background-color: var(--matrix-black);
+    font-family: var(--matrix-font);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: radial-gradient(circle at center, rgba(0, 59, 0, 0.25) 0%, rgba(6, 9, 7, 0.95) 75%);
 }
-main{
+
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-.calculator-container {
-    width: 300px;
-    background-color: var(--matrix-black);
-    border: 2px solid var(--matrix-medium-green);
+    gap: 24px;
     padding: 20px;
-    box-shadow: 0 0 15px var(--matrix-dark-green);
+}
+
+.calculator-container {
+    width: 320px;
+    background: var(--matrix-card-bg);
+    border: 1px solid rgba(0, 255, 65, 0.35);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 255, 65, 0.12), inset 0 0 15px rgba(0, 59, 0, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 .display-container {
     width: 100%;
-    height: 60px;
-    background: #001100;
+    height: 65px;
+    background: #040c06;
     color: var(--matrix-bright-green);
     text-align: right;
-    padding: 10px;
-    font-size: 1.5rem;
+    padding: 12px 16px;
+    font-size: 1.6rem;
+    font-weight: 700;
     margin-bottom: 20px;
-    border: 1px solid var(--matrix-dark-green);
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    border-radius: 8px;
     overflow: hidden;
-    text-shadow: 0 0 5px var(--matrix-bright-green);
+    text-shadow: 0 0 10px var(--matrix-glow);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .buttons-container {
@@ -49,42 +71,80 @@ main{
 }
 
 .btn {
-    padding: 15px;
-    background: var(--matrix-black);
-    border: 1px solid var(--matrix-medium-green);
+    padding: 14px 10px;
+    background: rgba(6, 12, 8, 0.8);
+    border: 1px solid rgba(0, 255, 65, 0.25);
+    border-radius: 6px;
     color: var(--matrix-bright-green);
     cursor: pointer;
     font-family: var(--matrix-font);
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn:hover {
     background: var(--matrix-medium-green);
-    color: black;
+    color: #ffffff;
+    box-shadow: 0 0 12px var(--matrix-glow);
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+.btn.operator {
+    background: rgba(0, 59, 0, 0.5);
+    border-color: rgba(0, 255, 65, 0.4);
+    color: #20e0ff;
+}
+
+.btn.clear {
+    background: rgba(80, 10, 10, 0.4);
+    border-color: rgba(255, 60, 60, 0.4);
+    color: #ff6060;
+}
+
+.btn.clear:hover {
+    background: #ff3333;
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(255, 60, 60, 0.5);
 }
 
 .equal {
-    grid-row: span 2; /* El igual es más alto */
+    grid-row: span 2;
     background: var(--matrix-dark-green);
-}
-.cero{
-    grid-column: span 3;
-}
-.btn-volver{
-    border: 5px;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    background-color: var(--matrix-dark-green);
-    color: var(--matrix-bright-green);
-    font-weight: bold;
-    transition: background-color 0.2s ease;
-    cursor: pointer;
-}
-.btn-volver:hover{
-    background-color: var(--matrix-medium-green);
+    border-color: var(--matrix-bright-green);
 }
 
-.btn-volver:active{
-    background-color: var(--matrix-bright-green);
-    transform: scale(0.9);
+.cero {
+    grid-column: span 3;
+}
+
+.btn-volver {
+    border: 1px solid var(--matrix-bright-green);
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-family: var(--matrix-font);
+    background: rgba(0, 59, 0, 0.4);
+    color: var(--matrix-bright-green);
+    font-weight: 600;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-volver:hover {
+    background: var(--matrix-bright-green);
+    color: var(--matrix-black);
+    box-shadow: 0 0 20px var(--matrix-glow);
+    transform: translateY(-2px);
+}
+
+.btn-volver:active {
+    transform: scale(0.97);
 }

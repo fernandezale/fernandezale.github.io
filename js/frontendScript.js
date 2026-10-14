@@ -1,72 +1,129 @@
-const btcCalc = document.getElementById('btn-calculadora');
-const btcGymweb = document.getElementById('btn-gymweb');
+/**
+ * FRONTEND PORTFOLIO SCRIPT
+ * Alexis - Frontend Developer
+ */
 
-btcCalc.addEventListener('click', () =>{
-    window.location.href = '../calculadora/calculadora.html';
-});
+document.addEventListener('DOMContentLoaded', () => {
+    // ---------------------------------------------------------
+    // 1. Redirección de Proyectos
+    // ---------------------------------------------------------
+    const btcCalc = document.getElementById('btn-calculadora');
+    const btcGymweb = document.getElementById('btn-gymweb');
 
-btcGymweb.addEventListener('click', () =>{
-    window.location.href = '../gymlandingpage/GymLandingPage.html';
-});
+    if (btcCalc) {
+        btcCalc.addEventListener('click', () => {
+            window.location.href = '../calculadora/calculadora.html';
+        });
+    }
 
-const canvas = document.getElementById('matrixCanvas');
-        const ctx = canvas.getContext('2d');
+    if (btcGymweb) {
+        btcGymweb.addEventListener('click', () => {
+            window.location.href = '../gymlandingpage/GymLandingPage.html';
+        });
+    }
 
-        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@%&*()ｦｱｳｴｵｶｷｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ";
-        const fontSize = 18;
-        let columns;
-        let drops = [];
+    // ---------------------------------------------------------
+    // 2. Menú de Navegación Móvil
+    // ---------------------------------------------------------
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            
-            // Recalcular columnas según el ancho y tamaño de fuente
-            columns = Math.floor(canvas.width / fontSize);
-            
-            // Inicializar o reajustar las posiciones de las gotas (drops)
-            // drops[i] guarda la coordenada Y de la gota en la columna i
-            drops = [];
-            for (let i = 0; i < columns; i++) {
-                drops[i] = Math.random() * -100; // Inicio aleatorio fuera de pantalla para naturalidad
-            }
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+            const isOpen = navMenu.classList.contains('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+            navToggle.innerHTML = isOpen 
+                ? '<i class="bi bi-x-lg"></i>' 
+                : '<i class="bi bi-list"></i>';
+        });
+
+        // Cerrar menú al hacer clic en cualquier enlace
+        const navLinks = navMenu.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.innerHTML = '<i class="bi bi-list"></i>';
+            });
+        });
+    }
+
+    // ---------------------------------------------------------
+    // 3. Animación de Lluvia Matrix Optimizada (requestAnimationFrame)
+    // ---------------------------------------------------------
+    const canvas = document.getElementById('matrixCanvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@%&*()ｦｱｳｴｵｶｷｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ";
+    const fontSize = 16;
+    let columns = 0;
+    let drops = [];
+    let isTabActive = true;
+    let lastFrameTime = 0;
+    const targetFpsInterval = 1000 / 30; // ~30 fps para rendimiento óptimo
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        columns = Math.floor(canvas.width / fontSize);
+        
+        drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.random() * -80; // Distribución aleatoria inicial
+        }
+    }
+
+    function renderMatrix(timestamp) {
+        if (!isTabActive) {
+            requestAnimationFrame(renderMatrix);
+            return;
         }
 
-        function draw() {
-            // Fondo semi-transparente para crear el efecto de estela (trail)
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        const elapsed = timestamp - lastFrameTime;
+        if (elapsed > targetFpsInterval) {
+            lastFrameTime = timestamp - (elapsed % targetFpsInterval);
+
+            // Capa de desvanecimiento suave (fade trail)
+            ctx.fillStyle = "rgba(6, 9, 7, 0.08)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Estilo de los caracteres
-            ctx.fillStyle = "#00ff41"; // Color verde Matrix clásico
-            ctx.font = fontSize + "px monospace";
+            // Caracteres Matrix en verde brillante
+            ctx.fillStyle = "#00ff41";
+            ctx.font = `${fontSize}px 'Fira Code', monospace`;
 
-            // Dibujar los caracteres
             for (let i = 0; i < drops.length; i++) {
-                // Seleccionar un caracter aleatorio
                 const text = characters.charAt(Math.floor(Math.random() * characters.length));
-                
-                // x = posición de columna, y = posición de la gota
                 const x = i * fontSize;
                 const y = drops[i] * fontSize;
 
                 ctx.fillText(text, x, y);
 
-                // Reiniciar la gota al inicio con una probabilidad aleatoria cuando sale de pantalla
-                if (y > canvas.height && Math.random() > 0.975) {
+                // Reiniciar al inicio cuando sale de pantalla de forma probabilística
+                if (y > canvas.height && Math.random() > 0.98) {
                     drops[i] = 0;
                 }
 
-                // Mover la gota hacia abajo
                 drops[i]++;
             }
         }
 
-        // Eventos y bucle de animación
-        window.addEventListener('resize', resizeCanvas);
-        
-        // Inicialización
-        resizeCanvas();
-        
-        // Ejecutar a ~30 cuadros por segundo para un look cinematográfico
-        setInterval(draw, 35);
+        requestAnimationFrame(renderMatrix);
+    }
+
+    // Pausar render cuando la pestaña pasa a segundo plano
+    document.addEventListener('visibilitychange', () => {
+        isTabActive = !document.hidden;
+    });
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(resizeCanvas, 150);
+    });
+
+    // Iniciar
+    resizeCanvas();
+    requestAnimationFrame(renderMatrix);
+});
