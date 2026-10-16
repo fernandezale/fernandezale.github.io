@@ -13,7 +13,8 @@
     
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
+    <!-- Dev Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <!-- Estilos -->
     <link rel="stylesheet" href="../css/globalStyles.css">
     <link rel="stylesheet" href="../css/frontendStyles.css">
@@ -67,7 +68,7 @@
 
             <div class="hero-subtitle">
                 <i class="bi bi-chevron-right"></i>
-                <span>Desarrollador Web Frontend &amp; Creador Digital</span>
+                <span>Desarrollador Web Frontend</span>
             </div>
 
             <p class="hero-description">
@@ -96,37 +97,37 @@
             </div>
 
             <div class="projects-grid">
-                <!-- Card 1: Calculadora -->
+                <!-- Card 1: Renuevo Muebles -->
                 <article class="project-card">
                     <div class="card-header-visual">
-                        <div class="mockup-preview">
+                        <a href="https://renuevomuebles.com/" target="_blank" rel="noopener noreferrer" class="mockup-preview" title="Abrir Renuevo Muebles">
                             <div class="mockup-pattern"></div>
-                            <i class="bi bi-calculator-fill mockup-icon"></i>
-                        </div>
+                            <img src="../assets/IconoPagRN.png" alt="Renuevo Muebles" class="mockup-image">
+                        </a>
                         <span class="card-category-badge">
-                            <i class="bi bi-braces"></i> Web App
+                            <i class="bi bi-shop"></i> Landing Page
                         </span>
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">
-                            <span>Calculadora JS</span>
-                            <i class="bi bi-arrow-up-right-circle text-muted"></i>
+                            <a href="https://renuevomuebles.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Renuevo Muebles</a>
+                            <i class="bi bi-box-arrow-up-right text-muted"></i>
                         </h3>
                         <p class="card-description">
-                            Calculadora modular interactiva desarrollada con JavaScript orientado a objetos (ES6 Modules). 
-                            Lógica desacoplada para operaciones aritméticas básicas y visualización estilo terminal.
+                            Landing page comercial para local de venta y fabricación de muebles. 
+                            Diseño visual enfocado en catálogo de productos, experiencia responsiva adaptada a dispositivos móviles y canales de atención directa.
                         </p>
                         <div class="card-tags">
-                            <span class="tech-tag">JavaScript ES6</span>
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS Grid</span>
-                            <span class="tech-tag">OOP</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Responsive</span>
+                            <span class="tech-tag">Typescript</span>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary btn-sm" id="btn-calculadora" type="button">
-                                <i class="bi bi-play-circle-fill"></i>
-                                <span>Probar Demo</span>
-                            </button>
+                            <a href="https://renuevomuebles.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" id="btn-renuevo">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                                <span>Visitar Sitio</span>
+                            </a>
                         </div>
                     </div>
                 </article>
@@ -212,7 +213,7 @@
             <div class="skills-grid">
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="bi bi-filetype-html"></i>
+                        <i class="devicon-html5-plain colored"></i>
                     </div>
                     <div class="skill-info">
                         <h3 class="skill-name">HTML5</h3>
@@ -225,7 +226,7 @@
 
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="bi bi-filetype-css"></i>
+                        <i class="devicon-css3-plain colored"></i>
                     </div>
                     <div class="skill-info">
                         <h3 class="skill-name">CSS3</h3>
@@ -238,7 +239,7 @@
 
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="bi bi-filetype-js"></i>
+                        <i class="devicon-javascript-plain colored"></i>
                     </div>
                     <div class="skill-info">
                         <h3 class="skill-name">JavaScript ES6+</h3>
@@ -251,7 +252,7 @@
 
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="bi bi-bootstrap-fill"></i>
+                        <i class="devicon-bootstrap-plain colored"></i>
                     </div>
                     <div class="skill-info">
                         <h3 class="skill-name">Bootstrap 5</h3>
@@ -264,7 +265,7 @@
 
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="bi bi-git"></i>
+                        <i class="devicon-git-plain colored"></i>
                     </div>
                     <div class="skill-info">
                         <h3 class="skill-name">Git &amp; GitHub</h3>
@@ -277,11 +278,24 @@
 
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <i class="bi bi-phone"></i>
+                        <i class="devicon-react-plain colored"></i>
                     </div>
                     <div class="skill-info">
-                        <h3 class="skill-name">Responsive Design</h3>
-                        <span class="skill-level-text">Adaptabilidad Multi-dispositivo</span>
+                        <h3 class="skill-name">React</h3>
+                        <span class="skill-level-text">Componentes &amp; Estado</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="devicon-typescript-plain colored"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3 class="skill-name">TypeScript</h3>
+                        <span class="skill-level-text">Programación Orientada a Objetos</span>
                         <div class="skill-bar">
                             <div class="skill-progress" style="width: 85%;"></div>
                         </div>

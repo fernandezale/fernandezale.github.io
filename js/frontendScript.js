@@ -7,14 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------------------------------------
     // 1. Redirección de Proyectos
     // ---------------------------------------------------------
-    const btcCalc = document.getElementById('btn-calculadora');
     const btcGymweb = document.getElementById('btn-gymweb');
-
-    if (btcCalc) {
-        btcCalc.addEventListener('click', () => {
-            window.location.href = '../calculadora/calculadora.html';
-        });
-    }
 
     if (btcGymweb) {
         btcGymweb.addEventListener('click', () => {
