@@ -3,316 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexis - Unreal Engine Portfolio</title>
-    <!-- Fuentes desde Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Bootstrap Icons (Soporte para el ícono de volver) -->
+    <title>Alexis Fernandez — Unreal Engine Developer</title>
+    <meta name="description" content="Portfolio de desarrollo en Unreal Engine 5. Gameplay Programmer con experiencia en proyectos publicados y mecánicas en C++.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Fira+Code:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
-    <!-- Bootstrap CSS (Requerido para el funcionamiento del carrusel) -->
+
+    <!-- Bootstrap CSS (carrusel) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Enlace a estilos -->
+
+    <!-- Estilos del portfolio Unreal -->
     <link rel="stylesheet" href="../css/unrealStyles.css">
-    <style>
-        /* Definición de variables de diseño de Unreal Engine en caso de fallback */
-        :root {
-            --unreal-blue: #0070f3;
-            --unreal-blue-glow: rgba(0, 112, 243, 0.4);
-            --unreal-dark: #0b0e11;
-            --unreal-slate: #161c22;
-            --unreal-slate-border: rgba(255, 255, 255, 0.1);
-            --unreal-text-gold: #f5a623; /* Detalle dorado clásico de Unreal */
-        }
-
-        /* Estilos adicionales para la vista de detalle del script */
-        #project-detail {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .detail-header {
-            height: 400px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            position: relative;
-            border: 1px solid var(--unreal-blue);
-        }
-
-        .detail-header::after {
-            content: "";
-            position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 60%;
-            background: linear-gradient(to top, var(--unreal-dark), transparent);
-        }
-
-        .image-carousel {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .image-carousel img {
-            width: 100%;
-            border-radius: 4px;
-            border: 1px solid var(--unreal-slate);
-            transition: transform 0.3s ease;
-        }
-
-        .image-carousel img:hover {
-            transform: scale(1.05);
-            border-color: var(--unreal-blue);
-        }
-
-        /* Estilos para las miniaturas en las cards */
-        .card-image-container {
-            width: 100%;
-            height: 160px;
-            overflow: hidden;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-            background: #000;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .card-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-            opacity: 0.8;
-        }
-
-        .card:hover .card-image-container img {
-            transform: scale(1.1);
-            opacity: 1;
-        }
-
-        /* Personalización de Tarjetas para el ecosistema de Unreal Engine */
-        .unreal-card {
-            background-color: var(--unreal-slate) !important;
-            border: 1px solid var(--unreal-slate-border) !important;
-            border-radius: 6px !important;
-            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .unreal-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: var(--unreal-blue);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .unreal-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--unreal-blue) !important;
-            box-shadow: 0 10px 25px var(--unreal-blue-glow) !important;
-        }
-
-        .unreal-card:hover::after {
-            opacity: 1;
-        }
-
-        /* Botón estilo Editor de Unreal */
-        .btn-unreal {
-            background-color: rgba(255, 255, 255, 0.05) !important;
-            border: 1px solid var(--unreal-blue) !important;
-            color: #ffffff !important;
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-        }
-
-        .btn-unreal:hover {
-            background-color: var(--unreal-blue) !important;
-            box-shadow: 0 0 15px var(--unreal-blue-glow);
-            transform: scale(1.02);
-        }
-
-        /* Distintivos y etiquetas tipo Unreal */
-        .badge-unreal {
-            background-color: var(--unreal-slate) !important;
-            border: 1px solid var(--unreal-blue) !important;
-            color: var(--unreal-blue) !important;
-            letter-spacing: 1px;
-            font-family: 'Fira Code', monospace;
-        }
-
-        /* Sobreescritura estética de Bootstrap para integrarse con tu estilo oscuro */
-        .carousel {
-            background-color: #050608;
-            border: 1px solid var(--unreal-slate-border);
-            border-radius: 8px;
-            padding: 1rem 0;
-        }
-        
-        .carousel-item img {
-            max-height: 500px;
-            object-fit: contain;
-        }
-
-        /* Personalización de los indicadores del carrusel */
-        .carousel-indicators [data-bs-target] {
-            background-color: var(--unreal-blue) !important;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
 </head>
 <body>
 
-    <!-- Botón para regresar a la landing central -->
-    <a href="../index.html" class="btn-back" style="text-decoration: none; display: inline-block; margin: 1rem;">
-        <span style="margin-right: 8px;">←</span> VOLVER AL INICIO
-    </a>
+    <!-- ===================================================================
+         NAVBAR STICKY
+         =================================================================== -->
+    <nav class="ue-nav" id="ueNav">
+        <a href="../index.html" class="ue-nav-brand">
+            <i class="bi bi-arrow-left"></i>
+            <span>Portal</span>
+        </a>
 
-    <div class="content">
-        
-        <!-- 1. SECCIÓN VISTA GENERAL (GRID DE PROYECTOS Y PERFIL) -->
-        <div id="projects-overview">
-            <header>
-                <h1 class="name">ALEXIS FERNANDEZ</h1>
-                <p class="tagline">Game Developer // C++ Programmer</p>
-            </header>
+        <button class="ue-nav-toggle" id="navToggle" aria-label="Abrir menú" type="button">
+            <i class="bi bi-list"></i>
+        </button>
 
-            <!-- Sección Sobre Mí -->
-            <div class="card" style="cursor: default; margin-bottom: 2rem;">
-                <h3 class="card-title">Perfil Técnico</h3>
-                <div class="card-meta">Core Engine & Gameplay</div>
-                <p class="text-secondary">
-                    Especializado en el desarrollo de mecánicas complejas y sistemas de herramientas dentro de Unreal Engine. 
-                    Fuerte enfoque en arquitectura de código en C++, optimización de Blueprints y sistemas de IA.
+        <div class="ue-nav-links" id="navLinks">
+            <a href="#experiencia" class="ue-nav-link">Experiencia</a>
+            <a href="#proyectos" class="ue-nav-link">Proyectos</a>
+            <a href="#contacto" class="ue-nav-link">Contacto</a>
+        </div>
+    </nav>
+
+    <div class="ue-content">
+
+        <!-- ===================================================================
+             HERO SECTION
+             =================================================================== -->
+        <section class="ue-hero" id="inicio">
+            <div class="ue-hero-badge">
+                <span class="ue-status-dot"></span>
+                Disponible para nuevos proyectos
+            </div>
+
+            <h1 class="ue-hero-name">ALEXIS<br>FERNANDEZ</h1>
+            <p class="ue-hero-tagline">Game Developer // C++ &amp; Unreal Engine Programmer</p>
+
+            <!-- Stats rápidas -->
+            <div class="ue-stats-row">
+                <div class="ue-stat">
+                    <span class="ue-stat-num">3</span>
+                    <span class="ue-stat-label">Años en UE</span>
+                </div>
+                <div class="ue-stat">
+                    <span class="ue-stat-num">2</span>
+                    <span class="ue-stat-label">Títulos Publicados</span>
+                </div>
+                <div class="ue-stat">
+                    <span class="ue-stat-num">C++</span>
+                    <span class="ue-stat-label">Lenguaje Principal</span>
+                </div>
+                <div class="ue-stat">
+                    <span class="ue-stat-num">UE5</span>
+                    <span class="ue-stat-label">Motor Principal</span>
+                </div>
+            </div>
+
+            <!-- Perfil técnico -->
+            <div class="ue-profile-card">
+                <div class="ue-profile-label">Perfil Técnico</div>
+                <p class="ue-profile-text">
+                    Especializado en el desarrollo de mecánicas de gameplay complejas y sistemas de herramientas dentro de Unreal Engine.
+                    Con experiencia en proyectos publicados para EA y equipos de desarrollo internacionales, 
+                    tengo un fuerte enfoque en arquitectura de código en C++, optimización de Blueprints y sistemas de UI con UMG.
                 </p>
-                <div class="tags">
+                <div class="ue-tech-row">
                     <span class="tag">Unreal Engine 5</span>
                     <span class="tag">C++</span>
                     <span class="tag">Blueprints</span>
                     <span class="tag">UMG</span>
+                    <span class="tag">GAS</span>
+                    <span class="tag">LUA</span>
                 </div>
             </div>
+        </section>
 
-            <!-- CONTENEDOR DE GRIDS -->
-            <div class="container-fluid p-0">
-                
-                <!-- Proyectos Profesionales -->
-                <h2 style="margin: 3rem 0 1.5rem; text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; color: var(--unreal-blue);">
-                    Experiencia Profesional
-                </h2>
-                
-                <div class="grid-projects" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                    
-                    <!-- Tarjeta: My Sims -->
-                    <div class="card unreal-card p-2" style="cursor: pointer;" onclick="showProject('MySims')">
-                        <div class="card-image-container">
-                            <img src="../assets/MySims-Cozy-Bundle.jpg" class="card-img-top rounded" alt="My Sims: Cozy Bundle Preview">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title h5 text-light fw-bold">My Sims: Cozy Bundle</h3>
-                            <div class="card-meta small mb-2">Gameplay Programmer // EA</div>
-                            <p class="small text-secondary">Click para ver detalles del proyecto e imágenes de gameplay.</p>
-                        </div>
-                    </div>
+        <!-- ===================================================================
+             VISTA GENERAL DE PROYECTOS
+             =================================================================== -->
+        <div id="projects-overview">
 
-                    <!-- Tarjeta: ARTé: Mecenas -->
-                    <div class="card unreal-card p-2" style="cursor: pointer;" onclick="showProject('Mecenas')">
-                        <div class="card-image-container">
-                            <img src="../assets/MecenasUEMenu.png" class="card-img-top rounded" alt="ARTé: Mecenas Preview">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title h5 text-light fw-bold">ARTé: Mecenas®</h3>
-                            <div class="card-meta small mb-2">Gameplay Programmer & UMG</div>
-                            <p class="small text-secondary">Click para ver detalles del proyecto e imágenes de gameplay.</p>
-                        </div>
-                    </div>
-
+            <!-- Experiencia Profesional -->
+            <section class="ue-section" id="experiencia">
+                <div class="ue-section-header">
+                    <span class="ue-section-label">// 01. PUBLICADOS</span>
+                    <h2 class="ue-section-title">Experiencia Profesional</h2>
                 </div>
 
-                <!-- Proyectos Personales -->
-                <h2 style="margin: 3rem 0 1.5rem; text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; color: var(--unreal-blue);">
-                    Proyectos Personales
-                </h2>
-                
-                <div class="grid-projects" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
-                    
-                    <!-- Tarjeta: Shooter Game -->
-                    <div class="card unreal-card p-2" style="cursor: pointer;" onclick="showPersonalProject('ShooterGame')">
-                        <div class="card-image-container">
-                            <img src="../assets/ShooterGamePickups.png" class="card-img-top rounded" alt="Shooter Game">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title h5 text-light fw-bold">ShooterGame</h3>
-                            <div class="card-meta small mb-2">C++ & Unreal Engine</div>
-                            <p class="small text-secondary">Click para ver mecánicas de armas, UI personalizada e inventario.</p>
-                        </div>
-                    </div>
+                <div class="ue-grid">
 
-                    <!-- Tarjeta: GAS Project -->
-                    <div class="card unreal-card p-2" style="cursor: pointer;" onclick="showPersonalProject('GASProject')">
-                        <div class="card-image-container">
-                            <!-- Fallback por si la imagen de GAS aún no existe localmente -->
-                            <img src="GASProject-1.jpg" onerror="this.onerror=null; this.src='../assets/ShooterGamePickups.png';" class="card-img-top rounded" alt="GAS Project">
+                    <!-- My Sims: Cozy Bundle -->
+                    <article class="ue-project-card" onclick="showProject('MySims')" role="button" tabindex="0" aria-label="Ver detalles de My Sims: Cozy Bundle">
+                        <div class="ue-card-image">
+                            <img src="../assets/MySims-Cozy-Bundle.jpg" alt="My Sims: Cozy Bundle — Preview" loading="lazy">
+                            <span class="ue-card-badge">EA Games</span>
                         </div>
-                        <div class="card-body">
-                            <h3 class="card-title h5 text-light fw-bold">GAS Project</h3>
-                            <div class="card-meta small mb-2">Gameplay Ability System</div>
-                            <p class="small text-secondary">Click para ver el proyecto de habilidades en Unreal Engine.</p>
+                        <div class="ue-card-body">
+                            <div class="ue-card-meta">Gameplay Programmer</div>
+                            <h3 class="ue-card-title">My Sims: Cozy Bundle</h3>
+                            <p class="ue-card-desc">
+                                Desarrollo de game loops, sistemas de UI y configuraciones de sistema local usando C++ y LUA.
+                                Proyecto publicado por Electronic Arts.
+                            </p>
+                            <div class="ue-tech-row">
+                                <span class="tag">C++</span>
+                                <span class="tag">LUA</span>
+                                <span class="tag">Unreal Engine</span>
+                                <span class="tag">UI Systems</span>
+                            </div>
+                            <div class="ue-card-cta">
+                                <span>Ver Proyecto</span>
+                                <i class="bi bi-arrow-right"></i>
+                            </div>
                         </div>
-                    </div>
+                    </article>
+
+                    <!-- ARTé: Mecenas -->
+                    <article class="ue-project-card" onclick="showProject('Mecenas')" role="button" tabindex="0" aria-label="Ver detalles de ARTé: Mecenas">
+                        <div class="ue-card-image">
+                            <img src="../assets/MecenasUEMenu.png" alt="ARTé: Mecenas® — Preview" loading="lazy">
+                            <span class="ue-card-badge">Triseum / TheOGs</span>
+                        </div>
+                        <div class="ue-card-body">
+                            <div class="ue-card-meta">Gameplay Programmer &amp; UMG</div>
+                            <h3 class="ue-card-title">ARTé: Mecenas®</h3>
+                            <p class="ue-card-desc">
+                                Juego educativo desarrollado para Triseum. Responsable de sistemas de gameplay, 
+                                interfaces UMG y herramientas de desarrollo en C++.
+                            </p>
+                            <div class="ue-tech-row">
+                                <span class="tag">C++</span>
+                                <span class="tag">UMG</span>
+                                <span class="tag">Blueprints</span>
+                                <span class="tag">UE5</span>
+                                <span class="tag">Tools</span>
+                            </div>
+                            <div class="ue-card-cta">
+                                <span>Ver Proyecto</span>
+                                <i class="bi bi-arrow-right"></i>
+                            </div>
+                        </div>
+                    </article>
 
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <!-- 2. VISTA DETALLE (OCULTA POR DEFECTO: controlado por JS) -->
-        <div id="project-detail" class="p-4 rounded shadow-lg my-4" style="background-color: var(--unreal-dark); border: 1px solid var(--unreal-slate-border);">
-            
-            <!-- Encabezado de la vista de detalle -->
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <button onclick="goBack()" class="btn btn-unreal px-4 fw-bold">
-                    <i class="bi bi-arrow-left-circle me-2"></i> VOLVER
+            <!-- Proyectos Personales -->
+            <section class="ue-section" id="proyectos">
+                <div class="ue-section-header">
+                    <span class="ue-section-label">// 02. PERSONALES</span>
+                    <h2 class="ue-section-title">Proyectos Personales</h2>
+                </div>
+
+                <div class="ue-grid">
+
+                    <!-- ShooterGame -->
+                    <article class="ue-project-card" onclick="showProject('ShooterGame')" role="button" tabindex="0" aria-label="Ver detalles de ShooterGame">
+                        <div class="ue-card-image">
+                            <img src="../assets/ShooterGamePickups.png" alt="ShooterGame — Preview" loading="lazy">
+                            <span class="ue-card-badge">Proyecto Personal</span>
+                        </div>
+                        <div class="ue-card-body">
+                            <div class="ue-card-meta">C++ &amp; Unreal Engine</div>
+                            <h3 class="ue-card-title">ShooterGame</h3>
+                            <p class="ue-card-desc">
+                                Implementación de mecánicas de armas (pistola, escopeta, sniper), UI personalizada, 
+                                sistema de pickups e inventario ampliado para múltiples armas.
+                            </p>
+                            <div class="ue-tech-row">
+                                <span class="tag">C++</span>
+                                <span class="tag">UE5</span>
+                                <span class="tag">Gameplay</span>
+                                <span class="tag">Inventario</span>
+                            </div>
+                            <div class="ue-card-cta">
+                                <span>Ver Proyecto</span>
+                                <i class="bi bi-arrow-right"></i>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+        </div><!-- /projects-overview -->
+
+        <!-- ===================================================================
+             VISTA DETALLE (controlada por JS)
+             =================================================================== -->
+        <div id="project-detail">
+
+            <div class="ue-detail-topbar">
+                <button onclick="goBack()" class="btn-unreal">
+                    <i class="bi bi-arrow-left-circle"></i>
+                    Volver a Proyectos
                 </button>
-                <span class="badge badge-unreal px-3 py-2 text-uppercase">Gameplay Showcase</span>
+                <span id="project-badge" class="tag" style="font-size: 0.78rem; padding: 5px 14px;"></span>
             </div>
 
-            <!-- Datos Dinámicos del Proyecto -->
-            <h2 id="project-title" class="display-6 fw-bold text-light mb-2"></h2>
-            <p id="project-description" class="lead text-secondary mb-4" style="font-size: 1rem;"></p>
+            <div class="ue-detail-header">
+                <div class="ue-detail-role-badge">
+                    <i class="bi bi-person-fill-gear"></i>
+                    <span id="project-role"></span>
+                </div>
+                <h2 class="ue-detail-title" id="project-title"></h2>
+                <p class="ue-detail-studio" id="project-studio"></p>
+            </div>
 
-            <!-- Contenedor donde se renderiza el Carrusel de Bootstrap dinámicamente -->
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div id="project-carousel-container" class="shadow">
-                        <!-- JS inyectará el carrusel aquí -->
-                    </div>
+            <p class="ue-detail-description" id="project-description"></p>
+
+            <div class="ue-detail-tags" id="project-tags"></div>
+
+            <!-- Carrusel de imágenes -->
+            <div id="project-carousel-container"></div>
+
+        </div><!-- /project-detail -->
+
+        <!-- ===================================================================
+             FOOTER
+             =================================================================== -->
+        <footer class="ue-footer" id="contacto">
+            <div class="ue-footer-grid">
+                <div>
+                    <div class="ue-footer-title">Contacto</div>
+                    <a href="mailto:alexis.ezequiel.fernandez.94@gmail.com" class="ue-footer-email">
+                        alexis.ezequiel.fernandez.94@gmail.com
+                    </a>
+                </div>
+                <div class="ue-footer-links">
+                    <a href="https://github.com/fernandezale" target="_blank" rel="noopener noreferrer" class="ue-footer-link">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                    <a href="https://linkedin.com/in/alexis-ezequiel-fernández-5738501a7" target="_blank" rel="noopener noreferrer" class="ue-footer-link">
+                        <i class="bi bi-linkedin"></i> LinkedIn
+                    </a>
                 </div>
             </div>
-        </div>
-
-        <!-- Footer con contacto -->
-        <footer class="contact-links" style="margin-top: 5rem; border-top: 1px solid var(--unreal-slate); padding-top: 2rem;">
-            <p>EMAIL: alexis.ezequiel.fernandez.94@gmail.com</p>
-            <a href="https://github.com/fernandezale" target="_blank" class="contact-link">GITHUB</a>
-            <a href="https://linkedin.com/in/alexis-ezequiel-fernández-5738501a7" target="_blank" class="contact-link">LINKEDIN</a>
+            <p class="ue-footer-copy">© 2026 Alexis Fernandez — Unreal Engine Developer</p>
         </footer>
-    </div>
 
-    <!-- Bootstrap Bundle JS (Contiene Popper, necesario para mover el carrusel) -->
+    </div><!-- /ue-content -->
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Cargar el script de lógica -->
+
+    <!-- Script de lógica -->
     <script src="../js/unrealScript.js"></script>
+
+    <!-- Mobile nav toggle -->
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navLinks  = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            const open = navLinks.classList.contains('open');
+            navToggle.innerHTML = open ? '<i class="bi bi-x-lg"></i>' : '<i class="bi bi-list"></i>';
+        });
+        navLinks.querySelectorAll('.ue-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                navToggle.innerHTML = '<i class="bi bi-list"></i>';
+            });
+        });
+
+        // Keyboard accessibility for cards
+        document.querySelectorAll('.ue-project-card').forEach(card => {
+            card.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
+        });
+    </script>
+
 </body>
+</html>
+
 </html>

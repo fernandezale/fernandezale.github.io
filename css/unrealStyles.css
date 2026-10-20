@@ -1,10 +1,17 @@
 @import 'globalStyles.css';
 
-/* Base styles adaptados a Unreal Engine */
-* {
+/* ==========================================================================
+   BASE RESET
+   ========================================================================== */
+
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -12,181 +19,691 @@ body {
     line-height: 1.6;
     color: white;
     background-color: var(--unreal-dark);
-    /* Sutil gradiente para dar profundidad */
-    background-image: 
-        radial-gradient(circle at 50% 0%, rgba(0, 112, 243, 0.1) 0%, transparent 50%),
+    background-image:
+        radial-gradient(circle at 50% 0%, rgba(0, 112, 243, 0.08) 0%, transparent 55%),
         linear-gradient(180deg, var(--unreal-dark) 0%, #050608 100%);
     min-height: 100vh;
-    padding-top: 4rem;
+    overflow-x: hidden;
 }
 
-/* Contenedor principal */
-.content {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem;
+/* ==========================================================================
+   CSS VARIABLES (fallback)
+   ========================================================================== */
+
+:root {
+    --unreal-blue: #0070f3;
+    --unreal-blue-glow: rgba(0, 112, 243, 0.4);
+    --unreal-blue-dim: rgba(0, 112, 243, 0.12);
+    --unreal-dark: #0b0e11;
+    --unreal-slate: #161c22;
+    --unreal-slate-2: #1e2530;
+    --unreal-slate-border: rgba(255, 255, 255, 0.08);
+    --unreal-gold: #f5a623;
+    --unreal-text-muted: rgba(255, 255, 255, 0.5);
+    --transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    --border-radius: 8px;
 }
 
-/* Botón Volver (Estilo Landing) */
-.btn-back {
-    position: fixed;
-    top: 1.5rem;
-    left: 1.5rem;
+/* ==========================================================================
+   SCROLLBAR
+   ========================================================================== */
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--unreal-dark); }
+::-webkit-scrollbar-thumb { background: #2a3340; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--unreal-blue); }
+
+/* ==========================================================================
+   STICKY NAVBAR
+   ========================================================================== */
+
+.ue-nav {
+    position: sticky;
+    top: 0;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 112, 243, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 32px;
+    background: rgba(11, 14, 17, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--unreal-slate-border);
+}
+
+.ue-nav-brand {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
     color: white;
-    padding: 0.6rem 1.2rem;
-    border-radius: 4px;
     text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     letter-spacing: 1px;
-    transition: all 0.3s ease;
+    text-transform: uppercase;
+    opacity: 0.7;
+    transition: opacity var(--transition);
 }
 
-.btn-back:hover {
-    background: var(--unreal-blue);
-    border-color: var(--unreal-blue);
-    box-shadow: 0 0 15px rgba(0, 112, 243, 0.5);
+.ue-nav-brand:hover { opacity: 1; color: var(--unreal-blue); }
+
+.ue-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
-/* Header de la página */
-header {
-    text-align: center;
-    margin-bottom: 4rem;
+.ue-nav-link {
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--unreal-text-muted);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    transition: all var(--transition);
 }
 
-.name {
-    font-size: 2.5rem;
-    font-weight: 800;
+.ue-nav-link:hover {
+    color: white;
+    background: var(--unreal-blue-dim);
+}
+
+.ue-nav-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--unreal-slate-border);
+    color: white;
+    font-size: 1.3rem;
+    padding: 5px 9px;
+    border-radius: 4px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   MAIN LAYOUT CONTAINER
+   ========================================================================== */
+
+.ue-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
+.ue-hero {
+    padding: 72px 0 60px;
+    position: relative;
+}
+
+.ue-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 112, 243, 0.1);
+    border: 1px solid rgba(0, 112, 243, 0.3);
+    padding: 5px 14px;
+    border-radius: 50px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--unreal-blue);
+    margin-bottom: 24px;
+}
+
+.ue-status-dot {
+    width: 7px;
+    height: 7px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #22c55e;
+    animation: ue-blink 2s infinite ease-in-out;
+}
+
+@keyframes ue-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+}
+
+.ue-hero-name {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 900;
     letter-spacing: -2px;
     text-transform: uppercase;
     font-style: italic;
-    background: linear-gradient(to bottom, #ffffff 30%, #a1a1a1 100%);
+    line-height: 1;
+    background: linear-gradient(to bottom, #ffffff 30%, #7a8ea8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
 }
 
-.tagline {
+.ue-hero-tagline {
     color: var(--unreal-blue);
-    font-weight: bold;
+    font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
     font-size: 0.9rem;
+    font-family: 'Fira Code', monospace;
+    margin-bottom: 40px;
 }
 
-/* Tarjetas de Proyecto */
-.card {
+/* Stats rápidas */
+.ue-stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.ue-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 16px 24px;
     background: var(--unreal-slate);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 4px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
+    border: 1px solid var(--unreal-slate-border);
+    border-radius: var(--border-radius);
+    min-width: 120px;
+    transition: border-color var(--transition);
+}
+
+.ue-stat:hover { border-color: rgba(0, 112, 243, 0.5); }
+
+.ue-stat-num {
+    font-size: 1.8rem;
+    font-weight: 900;
+    font-family: 'Fira Code', monospace;
+    color: var(--unreal-blue);
+    line-height: 1;
+}
+
+.ue-stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--unreal-text-muted);
+}
+
+/* Perfil técnico en el hero */
+.ue-profile-card {
+    background: var(--unreal-slate);
+    border: 1px solid var(--unreal-slate-border);
+    border-left: 3px solid var(--unreal-blue);
+    border-radius: var(--border-radius);
+    padding: 24px 28px;
+    max-width: 720px;
+}
+
+.ue-profile-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--unreal-blue);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.ue-profile-text {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+/* ==========================================================================
+   SECTION LABELS
+   ========================================================================== */
+
+.ue-section {
+    padding: 64px 0 0;
+}
+
+.ue-section-header {
+    margin-bottom: 28px;
+}
+
+.ue-section-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--unreal-blue);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.ue-section-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.ue-section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--unreal-slate-border), transparent);
+}
+
+/* ==========================================================================
+   PROJECT CARDS GRID
+   ========================================================================== */
+
+.ue-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.ue-project-card {
+    background: var(--unreal-slate);
+    border: 1px solid var(--unreal-slate-border);
+    border-radius: var(--border-radius);
     overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition);
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    border-color: var(--unreal-blue);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-/* Indicador lateral de Unreal Blue */
-.card::before {
+.ue-project-card::before {
     content: "";
     position: absolute;
-    left: 0;
     top: 0;
-    height: 100%;
-    width: 3px;
+    left: 0;
+    right: 0;
+    height: 2px;
     background: var(--unreal-blue);
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity var(--transition);
 }
 
-.card:hover::before {
+.ue-project-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 112, 243, 0.6);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 112, 243, 0.15);
+}
+
+.ue-project-card:hover::before { opacity: 1; }
+
+/* Card image */
+.ue-card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    background: #050608;
+}
+
+.ue-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: transform 0.5s ease, opacity 0.4s ease;
+}
+
+.ue-project-card:hover .ue-card-image img {
+    transform: scale(1.08);
     opacity: 1;
 }
 
-.card-title {
-    font-size: 1.5rem;
-    color: white;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    font-weight: 800;
-}
-
-.card-meta {
+.ue-card-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(11, 14, 17, 0.88);
+    border: 1px solid rgba(0, 112, 243, 0.4);
     color: var(--unreal-blue);
     font-family: 'Fira Code', monospace;
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 3px;
+    backdrop-filter: blur(4px);
 }
 
-/* Tags de tecnologías */
-.tags {
+/* Card body */
+.ue-card-body {
+    padding: 20px 22px 22px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+}
+
+.ue-card-meta {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--unreal-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.ue-card-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: -0.3px;
+}
+
+.ue-card-desc {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.6;
+    flex: 1;
+}
+
+.ue-tech-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1.5rem;
+    gap: 6px;
 }
+
+.ue-card-cta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--unreal-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: all var(--transition);
+}
+
+.ue-project-card:hover .ue-card-cta {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ==========================================================================
+   TAGS
+   ========================================================================== */
 
 .tag {
     background: rgba(0, 112, 243, 0.1);
     color: var(--unreal-blue);
-    border: 1px solid rgba(0, 112, 243, 0.2);
-    padding: 0.2rem 0.8rem;
-    border-radius: 2px;
-    font-size: 0.75rem;
-    font-weight: bold;
+    border: 1px solid rgba(0, 112, 243, 0.25);
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 0.72rem;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    font-family: 'Fira Code', monospace;
 }
 
-/* Links de contacto */
-.contact-links {
-    margin-top: 2rem;
+/* ==========================================================================
+   PROJECT DETAIL VIEW
+   ========================================================================== */
+
+#project-detail {
+    display: none;
+    animation: ue-fadeIn 0.4s ease forwards;
+}
+
+@keyframes ue-fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.ue-detail-topbar {
     display: flex;
-    gap: 1.5rem;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-.contact-link {
+.ue-detail-header {
+    margin-bottom: 28px;
+}
+
+.ue-detail-role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--unreal-blue-dim);
+    border: 1px solid rgba(0, 112, 243, 0.35);
+    color: var(--unreal-blue);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.ue-detail-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 6px;
+}
+
+.ue-detail-studio {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    color: var(--unreal-text-muted);
+    margin-bottom: 18px;
+}
+
+.ue-detail-description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.75;
+    max-width: 800px;
+    margin-bottom: 28px;
+}
+
+.ue-detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 36px;
+}
+
+/* Carrusel overrides */
+.carousel {
+    background-color: #050608;
+    border: 1px solid var(--unreal-slate-border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.carousel-item img {
+    max-height: 520px;
+    object-fit: contain;
+    padding: 8px 0;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: var(--unreal-blue) !important;
+    opacity: 0.5;
+}
+
+.carousel-indicators .active {
+    opacity: 1 !important;
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.btn-unreal {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(0, 112, 243, 0.4);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    backdrop-filter: blur(5px);
+    transition: all var(--transition);
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-unreal:hover {
+    background: var(--unreal-blue);
+    border-color: var(--unreal-blue);
+    color: white;
+    box-shadow: 0 0 18px var(--unreal-blue-glow);
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.ue-footer {
+    margin-top: 80px;
+    padding: 40px 0 24px;
+    border-top: 1px solid var(--unreal-slate-border);
+}
+
+.ue-footer-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.ue-footer-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    font-family: 'Fira Code', monospace;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--unreal-text-muted);
+    margin-bottom: 10px;
+}
+
+.ue-footer-email {
     color: white;
     text-decoration: none;
-    font-size: 0.9rem;
-    opacity: 0.6;
-    transition: opacity 0.3s;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: color var(--transition);
+    word-break: break-all;
 }
 
-.contact-link:hover {
-    opacity: 1;
-    color: var(--unreal-blue);
+.ue-footer-email:hover { color: var(--unreal-blue); }
+
+.ue-footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
 }
 
-/* Estilos de scrollbar tipo Unreal Engine */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: var(--unreal-dark);
-}
-::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: var(--unreal-blue);
+.ue-footer-link {
+    color: var(--unreal-text-muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 700;
+    font-family: 'Fira Code', monospace;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all var(--transition);
 }
 
-@media (min-width: 640px) {
-    .name
-    {
-      font-size: 3.5rem;
-      font-weight: 900;
+.ue-footer-link:hover { color: var(--unreal-blue); gap: 12px; }
+
+.ue-footer-copy {
+    font-size: 0.78rem;
+    color: var(--unreal-text-muted);
+    font-family: 'Fira Code', monospace;
+    border-top: 1px solid var(--unreal-slate-border);
+    padding-top: 20px;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .ue-nav {
+        padding: 12px 20px;
+        flex-wrap: wrap;
+        gap: 12px;
     }
+
+    .ue-nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .ue-nav-links.open { display: flex; }
+    .ue-nav-toggle { display: block; }
+
+    .ue-content { padding: 0 20px 60px; }
+
+    .ue-hero { padding: 48px 0 40px; }
+
+    .ue-stats-row { gap: 12px; }
+    .ue-stat { min-width: 90px; padding: 12px 16px; }
+    .ue-stat-num { font-size: 1.4rem; }
+
+    .ue-grid { grid-template-columns: 1fr; }
+
+    .ue-footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ue-footer-links { align-items: flex-start; }
+
+    .ue-detail-topbar { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 480px) {
+    .ue-hero-name { font-size: 2.4rem; }
+    .ue-section-title { font-size: 1.3rem; }
 }
